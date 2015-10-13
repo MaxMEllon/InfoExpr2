@@ -15,3 +15,9 @@ local.properties
 *.dex
 *.apk
 *.ap_
+*.iml
+Thumbs.db
+.DS_Store
+*.log
+*.swp
+*.bak
