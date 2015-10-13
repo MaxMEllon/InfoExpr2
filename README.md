@@ -12,5 +12,7 @@
 
 ## Author
 
-- [@maxmellon](https://github.com/MaxMEllon)
 - [@joniyjoniy](https://github.com/joniyjoniy)
+- [@ker2357](https://github.com/ker2357)
+- [@maxmellon](https://github.com/MaxMEllon)
+- [@mille](https://github.com/mille-f)
