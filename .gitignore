@@ -1,3 +1,17 @@
 .class
 .jar
+.metadata
+.project
+.settings/
+.classpath
+RemoteSystemsTempFiles
 !.keep
+*~
+\#*\#
+.idea
+bin/
+gen/
+local.properties
+*.dex
+*.apk
+*.ap_
