@@ -4,6 +4,7 @@
 .project
 .settings/
 .classpath
+.recommenders
 RemoteSystemsTempFiles
 !.keep
 *~
