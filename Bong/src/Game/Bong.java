@@ -11,7 +11,7 @@ import Player.User;
 public class Bong extends JApplet implements Runnable, KeyListener
 {
     private static final long serialVersionUID = 6838266341443127470L;
-    public static final Size size = new Size(400, 400);
+    public static final Size size = new Size(800, 400);
     private Field field;
     private Thread thread = null;
     private User user1 = new User(1);
@@ -23,27 +23,29 @@ public class Bong extends JApplet implements Runnable, KeyListener
         this.field = new Field(size, this.getGraphics());
         field.addBar(user1.getBar());
         field.addBar(user2.getBar());
-        this.addKeyListener(this);
         this.setContentPane(field);
         this.setFocusable(true);
+        this.addKeyListener(this);
     }
    
     @Override
     public void run() {
-        Thread updateThread = Thread.currentThread();
-        while (thread == updateThread) {
-            this.repaint();
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) { }
-            
+        Thread thisThread = Thread.currentThread();
+        while (thread == thisThread) {
+            while ( true ) {
+                this.repaint();
+                field.update();
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) { }
+            }
         }
     }
 
     @Override
     public void start() {
         if (thread == null) {
-            thread = new Thread();
+            thread = new Thread(this);
             thread.start();
         }
     }
