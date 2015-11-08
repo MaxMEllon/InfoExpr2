@@ -10,6 +10,6 @@ public class Size
         this.height = height;
     }
     
-    public int getWidth() { return this.width; }
-    public int getHeight() { return this.height; }
+    public int Width() { return this.width; }
+    public int Height() { return this.height; }
 }
