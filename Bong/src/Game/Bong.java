@@ -1,26 +1,68 @@
 package Game;
 
-import java.awt.Color;
-import javax.swing.JApplet;
-import Common.Point;
-import Common.Size;
-import Game.Content.Bar;
-import Game.Content.Field;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class Bong extends JApplet
+import javax.swing.JApplet;
+import Common.Size;
+import Game.Content.Field;
+import Player.User;
+
+public class Bong extends JApplet implements Runnable, KeyListener
 {
     private static final long serialVersionUID = 6838266341443127470L;
+    public static final Size size = new Size(400, 400);
     private Field field;
-    private Size size = new Size(400, 400);
+    private Thread thread = null;
+    private User user1 = new User(1);
+    private User user2 = new User(2);
     
     @Override
     public void init() {
         this.setSize(size.Width(), size.Height());
-        this.field = new Field(this.size, this.getGraphics());
-        Bar bar1 = new Bar(Color.BLUE, new Size(10, 100), new Point(0, 0));
-        Bar bar2 = new Bar(Color.RED, new Size(10, 100), new Point(390, 0));
-        field.addBar(bar1);
-        field.addBar(bar2);
+        this.field = new Field(size, this.getGraphics());
+        field.addBar(user1.getBar());
+        field.addBar(user2.getBar());
+        this.addKeyListener(this);
         this.setContentPane(field);
+        this.setFocusable(true);
     }
+   
+    @Override
+    public void run() {
+        Thread updateThread = Thread.currentThread();
+        while (thread == updateThread) {
+            this.repaint();
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) { }
+            
+        }
+    }
+
+    @Override
+    public void start() {
+        if (thread == null) {
+            thread = new Thread();
+            thread.start();
+        }
+    }
+
+    @Override
+    public void stop() {
+        thread = null;
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        this.user2.pressed(e);
+        this.user1.pressed(e);
+        repaint();
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) { }
+
+    @Override
+    public void keyTyped(KeyEvent e) { }
 }

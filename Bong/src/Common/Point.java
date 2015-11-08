@@ -23,6 +23,11 @@ public class Point
         this.y = pos.y;
     }
     
+    public void move(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+    
     public boolean isEqual(Point pos) {
         return this.x == pos.x && this.y == pos.y;
     }

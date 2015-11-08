@@ -30,6 +30,9 @@ public class Field extends BongPanel
         }
     }
     
+    public void update() {
+    }
+    
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
