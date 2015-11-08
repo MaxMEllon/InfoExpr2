@@ -1,5 +1,7 @@
 package Player;
 
+import java.awt.event.KeyEvent;
+
 import Game.Content.Bar;
 import Game.Content.BarCreator;
 
@@ -22,4 +24,6 @@ public abstract class Player
     public abstract void moveBar();
     
     public abstract void execSkill();
+    
+    public abstract void pressed(KeyEvent e);
 }

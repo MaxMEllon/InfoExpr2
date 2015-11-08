@@ -1,7 +1,6 @@
 package Game.Content;
 
 import java.awt.Color;
-
 import Common.Point;
 import Game.Bong;
 

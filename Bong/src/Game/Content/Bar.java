@@ -29,6 +29,11 @@ public class Bar extends BongPanel
         this.postion.move(this.postion.X(), y);
     }
     
+    public int X() { return postion.X(); }
+    public int Y() { return postion.Y(); }
+    public int Width() { return size.Width(); }
+    public int Height() { return size.Height(); }
+    
     @Override
     public void paintComponent(Graphics g) {
         this.setBounds(postion.X(), postion.Y(), size.Width(), size.Height());

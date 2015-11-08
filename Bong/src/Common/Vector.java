@@ -13,4 +13,7 @@ public class Vector
         this.dx = dx;
         this.dy = dy;
     }
+    
+    public void reverceX() { this.dx *= -1; }
+    public void reverceY() { this.dy *= -1; }
 }

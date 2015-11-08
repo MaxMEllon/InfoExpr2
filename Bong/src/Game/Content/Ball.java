@@ -21,16 +21,16 @@ public class Ball extends BongPanel
 
     public void move() {
         if (vector.x >= Bong.size.Width()) {
-            vector.dx *= -1;
+            vector.reverceX();
         }
         if (vector.y >= Bong.size.Height()) {
-            vector.dy *= -1;
+            vector.reverceY();
         }
         if (vector.x <= 0) {
-            vector.dx *= -1;
+            vector.reverceX();
         }
         if (vector.y <= 0) {
-            vector.dy *= -1;
+            vector.reverceY();
         }
         vector.x += vector.dx;
         vector.y += vector.dy;

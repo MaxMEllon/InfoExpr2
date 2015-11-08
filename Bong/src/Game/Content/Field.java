@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import Common.BongPanel;
 import Common.Size;
+import Game.Bong;
 
 public class Field extends BongPanel
 {
@@ -28,6 +29,18 @@ public class Field extends BongPanel
     }
    
     public void update() {
+        if (ball.vector.x <= bars.get(0).Width()
+            && ball.vector.y >= bars.get(0).Y()
+            && ball.vector.y <= bars.get(0).Y() + bars.get(0).Height()) {
+            ball.vector.reverceX();
+            ball.vector.reverceY();
+        }
+        if (ball.vector.x >= Bong.size.Width() - bars.get(1).Width()
+            && ball.vector.y >= bars.get(1).Y()
+            && ball.vector.y <= bars.get(1).Y() + bars.get(1).Height()) {
+            ball.vector.reverceX();
+            ball.vector.reverceY();
+        }
         ball.move();
     }
     
