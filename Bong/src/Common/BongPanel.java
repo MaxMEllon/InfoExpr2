@@ -1,7 +1,5 @@
 package Common;
 
-import java.awt.Image;
-
 import javax.swing.JPanel;
 
 public class BongPanel extends JPanel
@@ -15,10 +13,6 @@ public class BongPanel extends JPanel
        this.size = size; 
     }
     
-    public Image createImage(Size size) {
-        return this.createImage(size.Height(), size.Height());
-    }
-
     public int getWidth() {
         return this.size.Width();
     }

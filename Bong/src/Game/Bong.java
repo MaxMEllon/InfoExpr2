@@ -2,7 +2,6 @@ package Game;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import javax.swing.JApplet;
 import Common.Size;
 import Game.Content.Field;
@@ -36,7 +35,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
                 this.repaint();
                 field.update();
                 try {
-                    Thread.sleep(50);
+                    Thread.sleep(10);
                 } catch (InterruptedException e) { }
             }
         }
