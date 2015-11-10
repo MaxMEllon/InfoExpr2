@@ -12,4 +12,4 @@ exec: clean compile
 
 .PHONY: clean
 clean:
-	-rm -rf src/**/*.class src/**/**/*.class
+	-rm -rf src/**/*.class src/**/**/*.class src/**/**/**/*.class
