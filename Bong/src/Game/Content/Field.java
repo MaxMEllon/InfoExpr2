@@ -11,7 +11,7 @@ public class Field extends BongPanel
     private static final long serialVersionUID = 6088522508841961855L;
     private ArrayList<Bar> bars = new ArrayList<Bar>();
     private Ball ball = new Ball();
-  
+
     public Field(Size size, Graphics g) {
         super(size);
         this.setBounds(0, 0, size.Width(), size.Height());
@@ -22,12 +22,12 @@ public class Field extends BongPanel
         super(new Size(width, height));
         this.add(ball);
     }
-    
+
     public void addBar(Bar bar) {
         bars.add(bar);
         this.add(bar);
     }
-   
+
     public void update() {
         if (ball.vector.x <= bars.get(0).Width()
             && ball.vector.y >= bars.get(0).Y()
@@ -43,7 +43,7 @@ public class Field extends BongPanel
         }
         ball.move();
     }
-    
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
