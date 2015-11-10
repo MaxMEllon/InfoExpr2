@@ -15,7 +15,7 @@ public class FastBall extends Ball
     public Vector vector;
     public FastBall (){
         super();
-        this.vector = new Vector(Bong.size.Width()/2, Bong.size.Height()/2,1,1);
+        this.vector = new Vector(Bong.size.Width()/2, Bong.size.Height()/2,2,2);
     }
     
     public void move() {
