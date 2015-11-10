@@ -2,7 +2,9 @@ package Game;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.JApplet;
+import java.applet.*;
+import java.net.URL;
+import javax.swing.*;
 import Common.Size;
 import Game.Content.Field;
 import Player.User;
@@ -15,6 +17,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
     private Thread thread = null;
     private User user1 = new User(1);
     private User user2 = new User(2);
+    private AudioClip Bgm;
 
     @Override
     public void init() {
@@ -22,6 +25,8 @@ public class Bong extends JApplet implements Runnable, KeyListener
         this.field = new Field(size, this.getGraphics());
         field.addBar(user1.getBar());
         field.addBar(user2.getBar());
+        URL url = getDocumentBase();
+        this.Bgm = getAudioClip(url, "./assets/bgm/01.mid");
         this.setContentPane(field);
         this.setFocusable(true);
         this.addKeyListener(this);
@@ -45,6 +50,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
 
     @Override
     public void start() {
+        this.Bgm.play();
         if (thread == null) {
             thread = new Thread(this);
             thread.start();
