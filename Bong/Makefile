@@ -7,7 +7,7 @@ APPLET = appletviewer
 compile:
 	$(JAVA) $(FLAGS) $(CLASS_PATH) $(SOURCES)
 
-exec: compile
+exec: clean compile
 	$(APPLET) index.html
 
 .PHONY: clean

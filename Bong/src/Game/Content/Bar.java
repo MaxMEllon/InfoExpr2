@@ -17,7 +17,8 @@ public class Bar extends BongPanel
     protected int speed = 30;
 
     public Bar(Color color, Point pos) {
-        super(new Size(10, 100));
+        super();
+        this.resize(new Size(10, 100));
         this.color = color;
         this.postion = pos;
     }
