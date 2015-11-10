@@ -15,7 +15,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
     private Thread thread = null;
     private User user1 = new User(1);
     private User user2 = new User(2);
-    
+
     @Override
     public void init() {
         this.setSize(size.Width(), size.Height());
@@ -26,7 +26,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
         this.setFocusable(true);
         this.addKeyListener(this);
     }
-   
+
     @Override
     public void run() {
         Thread thisThread = Thread.currentThread();
