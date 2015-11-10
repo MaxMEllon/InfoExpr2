@@ -1,6 +1,8 @@
 # InfoExpr2
 
 [![Build Status](https://travis-ci.org/MaxMEllon/InfoExpr2.svg?branch=master)](https://travis-ci.org/MaxMEllon/InfoExpr2)
+[![License](https://img.shields.io/github/license/MaxMEllon/InfoExpr2.svg)](https://github.com/MaxMEllon/InfoExpr2/blob/master/LICENSE.txt)
+
 
 ## About
 
