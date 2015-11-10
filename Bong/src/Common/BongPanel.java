@@ -7,20 +7,30 @@ public class BongPanel extends JPanel
     private static final long serialVersionUID = -6626211277264484350L;
 
     protected Size size;
-    
-    public BongPanel(Size size) {
-       super();
-       this.size = size; 
+
+    public BongPanel() {
+        super();
+        this.size = new Size(-1, -1);
     }
-    
+
+    public BongPanel(Size size) {
+        super();
+        this.size = size;
+    }
+
+    public void setMySize(Size size) {
+        super.resize(size.Width(), size.Height());
+        this.size = size;
+    }
+
     public int getWidth() {
         return this.size.Width();
     }
-    
+
     public int getHeight() {
         return this.size.Height();
     }
-    
+
     public void callbackMethod() {
         _callbacks.callbackMethod();
     }

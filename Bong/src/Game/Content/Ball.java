@@ -37,6 +37,11 @@ public class Ball extends BongPanel
         this.setBounds(vector.x, vector.y, size.Width(), size.Height());
     }
 
+    public void changeSpeed(int speed) {
+        this.vector.dx = speed;
+        this.vector.dy = speed;
+    }
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
