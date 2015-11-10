@@ -10,7 +10,7 @@ public class FastBar extends Bar
 
     public FastBar(Color color, Point pos) {
         super(color, pos);
-        this.size = new Size(10, 60);
-        this.speed = 60;
+        super.size = new Size(10, 60);
+        super.speed = 60;
     }
 }

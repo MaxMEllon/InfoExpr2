@@ -11,13 +11,13 @@ public class User extends Player
 
     private final int up;
     private final int down;
-    
+
     public User(int id) {
         super(id);
         up = id == 1 ? UP_1P : UP_2P;
         down = id == 1 ? DOWN_1P : DOWN_2P;
     }
-    
+
     @Override
     public void moveBar() {
         bar.move(direction);

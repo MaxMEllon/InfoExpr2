@@ -1,6 +1,6 @@
 JAVA = javac
 SOURCES = $(wildcard src/**/*.java)
-FLAGS = -classpath
+FLAGS = -Xlint:deprecation -classpath
 CLASS_PATH = src/
 APPLET = appletviewer
 

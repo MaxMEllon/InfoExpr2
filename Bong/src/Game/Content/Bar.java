@@ -10,16 +10,21 @@ import Game.Bong;
 public class Bar extends BongPanel
 {
     private static final long serialVersionUID = 4286321766529401859L;
-    private static final Size size = new Size(10, 100);
 
+    protected Size size;
     protected Color color;
     protected Point postion;
     protected int speed = 30;
 
     public Bar(Color color, Point pos) {
-        super(size);
+        super(new Size(10, 100));
         this.color = color;
         this.postion = pos;
+    }
+
+    public void resize(Size size) {
+        super.setMySize(size);
+        this.size = size;
     }
 
     public void move(int direction) {
