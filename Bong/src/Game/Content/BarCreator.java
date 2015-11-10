@@ -15,7 +15,7 @@ public class BarCreator
         case 0: 
             bar = new Bar(color, pos);
             break;
-        // TODO : bar�̎�ނ𑝂₷
+        // TODO : barの種類を増やす
         default:
             bar = null;
         }
