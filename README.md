@@ -1,5 +1,7 @@
 # InfoExpr2
 
+[![Build Status](https://travis-ci.org/MaxMEllon/InfoExpr2.svg?branch=master)](https://travis-ci.org/MaxMEllon/InfoExpr2)
+
 ## About
 
 某大学の3年次後期授業課題．
