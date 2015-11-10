@@ -1,8 +1,4 @@
-package Game.Content;
-
-import java.awt.Color;
-import Common.Point;
-import Game.Bong;
+package Game.Content.Ball;
 
 public class BallCreator {
     public static Ball create(int ballId) {

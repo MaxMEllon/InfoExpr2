@@ -1,4 +1,4 @@
-package Game.Content;
+package Game.Content.Ball;
 
 import java.awt.Color;
 import java.awt.Graphics;

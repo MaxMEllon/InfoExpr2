@@ -1,9 +1,7 @@
 package Player;
 
 import java.awt.event.KeyEvent;
-
-import Game.Content.Bar;
-import Game.Content.BarCreator;
+import Game.Content.Bar.*;
 
 public abstract class Player
 {
