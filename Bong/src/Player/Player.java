@@ -12,7 +12,7 @@ public abstract class Player
     protected int id;
  
     protected Player(int id) {
-        // TODO: menu‚ÅbarId‚ğw’è‚µ‚ÄD‚«‚Èbar‚ğ‘I‚×‚é‚æ‚¤‚É‚·‚é
+        // TODO: menuã§barIdã‚’æŒ‡å®šã—ã¦å¥½ããªbarã‚’é¸ã¹ã‚‹ã‚ˆã†ã«ã™ã‚‹
         bar = BarCreator.create(id, 0);
         this.id = id;
     }
