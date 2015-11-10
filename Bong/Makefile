@@ -1,7 +1,8 @@
 JAVA = javac
 SOURCES = $(wildcard src/**/*.java)
-FLAGS = -Xlint:deprecation -classpath
-CLASS_PATH = src/
+CLASSES = $(addprefix ./, $(SOURCES:.java=.class))
+FLAGS = -encoding UTF-8 -Xlint:deprecation
+CLASS_PATH = -classpath src/
 APPLET = appletviewer
 
 compile:
@@ -12,4 +13,4 @@ exec: clean compile
 
 .PHONY: clean
 clean:
-	-rm -rf src/**/*.class src/**/**/*.class
+	-rm -rf $(CLASSES) src/**/**/**/*.class
