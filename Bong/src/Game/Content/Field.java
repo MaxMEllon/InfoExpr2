@@ -10,7 +10,7 @@ public class Field extends BongPanel
 {
     private static final long serialVersionUID = 6088522508841961855L;
     private ArrayList<Bar> bars = new ArrayList<Bar>();
-    private Ball ball = new Ball();
+    private Ball ball = BallCreator.create(0);
   
     public Field(Size size, Graphics g) {
         super(size);
