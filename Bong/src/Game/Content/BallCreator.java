@@ -5,26 +5,30 @@ import Common.Point;
 import Game.Bong;
 
 public class BallCreator {
-	public static Ball create(int ballID){
-        Ball ball;
-        Color color;
-        
-        switch (ballID){    
-        case 0:  
-            ball = new Ball();                //’Êí
+    public static Ball create(int ballId) {
+        Ball ball = null;
+
+        switch (ballId) {
+        case 0:
+            // æ¨™æº–
+            ball = new Ball();
             break;
         case 1:
-            ball = new FastBall();  //‚‘¬
+            // é«˜é€Ÿ
+            ball = new FastBall();
             break;
-        case 2:             //’á‘¬
-        case 3:             //d—Í
-        case 4:             //”S’…
-        case 5:             //’µ‚Ë•Ô‚è•û‚ğƒ‰ƒ“ƒ_ƒ€
-        default: 
+        case 2:
+            // é‡åŠ›
+            break;
+        case 3:
+            // ç²˜ç€
+            break;
+        case 4:
+            // ãƒ©ãƒ³ãƒ€ãƒ 
+            break;
+        default:
             ball = null;
-            
         }
         return ball;
-	}
-
+    }
 }

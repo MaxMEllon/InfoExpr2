@@ -13,7 +13,7 @@ public class Ball extends BongPanel
     private static final Size size = new Size(10, 10);
 
     public Vector vector;
-    
+
     public Ball() {
         super(size);
         this.vector = new Vector(Bong.size.Width()/2, Bong.size.Height()/2, 1, 1);
@@ -36,7 +36,7 @@ public class Ball extends BongPanel
         vector.y += vector.dy;
         this.setBounds(vector.x, vector.y, size.Width(), size.Height());
     }
-    
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
