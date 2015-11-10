@@ -12,10 +12,12 @@ public class BarCreator
         Color color = playerId == 1 ? Color.BLUE : Color.RED;
         Point pos = playerId == 1 ? new Point(0, 0) : new Point(Bong.size.Width()-10, 0);
         switch (barId) {
-        case 0: 
+        case 0:
             bar = new Bar(color, pos);
             break;
-        // TODO : barの種類を増やす
+        case 1:
+            bar = new FastBar(color, pos);
+            break;
         default:
             bar = null;
         }
