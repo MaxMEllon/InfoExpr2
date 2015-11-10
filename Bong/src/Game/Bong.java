@@ -36,7 +36,9 @@ public class Bong extends JApplet implements Runnable, KeyListener
                 field.update();
                 try {
                     Thread.sleep(10);
-                } catch (InterruptedException e) { }
+                } catch (InterruptedException e) {
+                    System.out.println("Thread error : " + e.toString());
+                }
             }
         }
     }

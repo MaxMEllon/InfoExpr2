@@ -32,6 +32,7 @@ public class Field extends BongPanel
     }
 
     public void update() {
+        // TODO: ここいい感じにしたい
         if (ball.vector.x <= bars.get(0).Width()
             && ball.vector.y >= bars.get(0).Y()
             && ball.vector.y <= bars.get(0).Y() + bars.get(0).Height()) {

@@ -20,18 +20,8 @@ public class Ball extends BongPanel
     }
 
     public void move() {
-        if (vector.x >= Bong.size.Width()) {
-            vector.reverceX();
-        }
-        if (vector.y >= Bong.size.Height()) {
-            vector.reverceY();
-        }
-        if (vector.x <= 0) {
-            vector.reverceX();
-        }
-        if (vector.y <= 0) {
-            vector.reverceY();
-        }
+        if (0 <= vector.x || vector.x >= Bong.size.Width()) { vector.reverceX(); }
+        if (0 <= vector.y || vector.y >= Bong.size.Height()) { vector.reverceY(); }
         vector.x += vector.dx;
         vector.y += vector.dy;
         this.setBounds(vector.x, vector.y, size.Width(), size.Height());
