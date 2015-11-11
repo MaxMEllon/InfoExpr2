@@ -39,15 +39,15 @@ public class User extends Player
     @Override
     public void execSkill() {
     }
-    
+
     @Override
     public void execPause() {
-    	Bong.threadSuspended = true;
+        Bong.threadSuspended = true;
     }
-    
+
     public synchronized void execRestart() {
-    	Bong.threadSuspended = false;
-    	notify();
+        Bong.threadSuspended = false;
+        notify();
     }
 
     public void pressed(KeyEvent e) {
@@ -60,9 +60,9 @@ public class User extends Player
             this.direction = 1;
             this.moveBar();
         } else if (key == PAUSE ) {
-        	this.execPause();
+            this.execPause();
         } else if ( key == RESTART) {
-        	this.execRestart();
+            this.execRestart();
         }
     }
 }

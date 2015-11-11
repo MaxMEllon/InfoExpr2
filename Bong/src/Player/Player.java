@@ -29,7 +29,7 @@ public abstract class Player
 
     public abstract void pressed(KeyEvent e);
 
-	public abstract void execPause();
-	
-	public abstract void execRestart();
+    public abstract void execPause();
+
+    public abstract void execRestart();
 }
