@@ -15,7 +15,7 @@ public class Field extends BongPanel
     private static final long serialVersionUID = 6088522508841961855L;
     private static Color backGroundColor = Color.BLACK;
     private ArrayList<Bar> bars = new ArrayList<Bar>();
-    private Ball ball = BallCreator.create(2);
+    private Ball ball = BallCreator.create(1);
 
     public Field(Size size, Graphics g) {
         super(size);
@@ -35,6 +35,7 @@ public class Field extends BongPanel
 
     public void update() {
         // TODO: ここいい感じにしたい
+        ball.move();
         if (ball.vector.x <= bars.get(0).Width()
             && ball.vector.y >= bars.get(0).Y()
             && ball.vector.y <= bars.get(0).Y() + bars.get(0).Height()) {
@@ -47,7 +48,6 @@ public class Field extends BongPanel
             ball.vector.reverceX();
             ball.vector.reverceY();
         }
-        ball.move();
     }
 
     public static Color getBackGroundColor() { return backGroundColor; }
