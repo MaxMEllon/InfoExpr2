@@ -13,7 +13,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
     private static final int P1 = 1, P2 = 2;
 
     public static final Size size = new Size(800, 400);
-    public static boolean threadSuspended = false; 
+    public static boolean threadSuspended = false;
     private Field field;
     private Thread thread = null;
     private User user1 = new User(P1, 1);
@@ -35,14 +35,14 @@ public class Bong extends JApplet implements Runnable, KeyListener
         Thread thisThread = Thread.currentThread();
         while (thread == thisThread) {
             while ( true ) {
-            	while (threadSuspended) { // PAUSE
-            		synchronized(this) {
-            			try {
-            				wait();
-            			} catch (InterruptedException e) {
-            			}
-            		}
-            	}
+                while (threadSuspended) { // PAUSE
+                    synchronized(this) {
+                        try {
+                            wait();
+                        } catch (InterruptedException e) {
+                        }
+                    }
+                }
                 this.repaint();
                 field.update();
                 try {
@@ -79,5 +79,4 @@ public class Bong extends JApplet implements Runnable, KeyListener
 
     @Override
     public void keyTyped(KeyEvent e) { }
-    
 }

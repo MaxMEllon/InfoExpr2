@@ -14,7 +14,7 @@ public class BallCreator {
             ball = new FastBall();
             break;
         case 2:
-            // 重力
+            ball = new GrvBall();// 重力
             break;
         case 3:
             // 粘着
