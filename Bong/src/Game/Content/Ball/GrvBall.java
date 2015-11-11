@@ -11,15 +11,14 @@ public class GrvBall extends Ball
     public GrvBall() {
         super();
         super.changeSpeed(2);
-        this.vector = new Vector(Bong.size.Width()/2, Bong.size.Height()/2, 7, 1);
+        this.vector = new Vector(Bong.size.Width()/2, Bong.size.Height()/2, 7, -4);
     }
     public void move() {
         if (vector.x >= Bong.size.Width()) {
-            
             vector.reverceX();
-            
         }
         if (vector.y >= Bong.size.Height()) {
+            vector.y = Bong.size.Height();
             changeSpeedY(vector.dy-1);
             vector.reverceY();
         }
@@ -27,12 +26,13 @@ public class GrvBall extends Ball
             vector.reverceX();
         }
         if (vector.y <= 0) {
-            changeSpeedY(vector.dy);
+            vector.y = 0;
+            changeSpeedY(vector.dy+1);
             vector.reverceY();
         }
         vector.x += vector.dx;
         vector.y += vector.dy;
-        changeSpeedY(vector.dy+1);
+        changeSpeedY(vector.dy+vector.dx/Math.abs(vector.dx));
         this.setBounds(vector.x, vector.y, size.Width(), size.Height());
     }
     public void changeSpeedY(int speed) {
