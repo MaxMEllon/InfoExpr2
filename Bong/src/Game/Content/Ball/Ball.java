@@ -11,7 +11,7 @@ import Game.Content.Field;
 public class Ball extends BongPanel
 {
     private static final long serialVersionUID = -507966157766942319L;
-    private static final Size size = new Size(10, 10);
+    private static final Size size = new Size(20, 20);
 
     public Vector vector;
 
@@ -23,15 +23,19 @@ public class Ball extends BongPanel
     public void move() {
         if (vector.x >= Bong.size.Width()) {
             vector.reverceX();
+            vector.x = Bong.size.Width() - (size.Width() + 1);
         }
         if (vector.y >= Bong.size.Height()) {
             vector.reverceY();
+            vector.y = Bong.size.Height() - (size.Height() + 1);
         }
         if (vector.x <= 0) {
             vector.reverceX();
+            vector.x = size.Width() + 1;
         }
         if (vector.y <= 0) {
             vector.reverceY();
+            vector.y = size.Height() + 1;
         }
         vector.x += vector.dx;
         vector.y += vector.dy;
