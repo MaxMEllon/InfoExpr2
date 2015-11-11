@@ -3,7 +3,6 @@ package Game.Content;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
-
 import Common.BongPanel;
 import Common.Size;
 import Game.Bong;
@@ -14,6 +13,7 @@ import Game.Content.Bar.Bar;
 public class Field extends BongPanel
 {
     private static final long serialVersionUID = 6088522508841961855L;
+    private static Color backGroundColor = Color.BLACK;
     private ArrayList<Bar> bars = new ArrayList<Bar>();
     private Ball ball = BallCreator.create(0);
 
@@ -50,10 +50,12 @@ public class Field extends BongPanel
         ball.move();
     }
 
+    public static Color getBackGroundColor() { return backGroundColor; }
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(Color.black);
+        g.setColor(backGroundColor);
         g.fillRect(0, 0, size.Width(), size.Height());
         g.setColor(Color.green);
         g.drawLine((int)size.Width()/2, 0, (int)size.Width()/2, size.Height());

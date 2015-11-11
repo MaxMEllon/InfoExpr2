@@ -6,6 +6,7 @@ import Common.BongPanel;
 import Common.Size;
 import Common.Vector;
 import Game.Bong;
+import Game.Content.Field;
 
 public class Ball extends BongPanel
 {
@@ -45,6 +46,8 @@ public class Ball extends BongPanel
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.setColor(Field.getBackGroundColor());
+        g.fillRect(0, 0, size.Width(), size.Height());
         g.setColor(Color.GREEN);
         g.fillOval(0, 0, size.Width(), size.Height());
     }
