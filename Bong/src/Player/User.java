@@ -2,16 +2,12 @@ package Player;
 
 import java.awt.event.KeyEvent;
 
-import Game.Bong;
-
 public class User extends Player
 {
     private static final int UP_1P = 87;    // W
     private static final int DOWN_1P = 83;  // S
     private static final int UP_2P = 38;    // UP
     private static final int DOWN_2P = 40;  // DOWN
-    private static final int PAUSE = 80;    // P
-    private static final int RESTART = 82;
 
     private int up;
     private int down;
@@ -40,16 +36,6 @@ public class User extends Player
     public void execSkill() {
     }
 
-    @Override
-    public void execPause() {
-        Bong.threadSuspended = true;
-    }
-
-    public synchronized void execRestart() {
-        Bong.threadSuspended = false;
-        notify();
-    }
-
     public void pressed(KeyEvent e) {
         int key = e.getKeyCode();
         System.out.println(key);
@@ -59,10 +45,6 @@ public class User extends Player
         } else if (key == down) {
             this.direction = 1;
             this.moveBar();
-        } else if (key == PAUSE ) {
-            this.execPause();
-        } else if ( key == RESTART) {
-            this.execRestart();
         }
     }
 }
