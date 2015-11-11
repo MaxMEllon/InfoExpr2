@@ -18,6 +18,9 @@ public class BarCreator
         case 1:
             bar = new FastBar(color, pos);
             break;
+        case 2:
+            bar = new LongBar(color, pos);
+            break;
         default:
             bar = null;
         }

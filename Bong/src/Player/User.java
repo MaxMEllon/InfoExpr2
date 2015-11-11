@@ -9,11 +9,20 @@ public class User extends Player
     private static final int UP_2P = 38;    // UP
     private static final int DOWN_2P = 40;  // DOWN
 
-    private final int up;
-    private final int down;
+    private int up;
+    private int down;
 
     public User(int id) {
         super(id);
+        this.setKey();
+    }
+
+    public User(int id, int barId) {
+        super(id, barId);
+        this.setKey();
+    }
+
+    private void setKey() {
         up = id == 1 ? UP_1P : UP_2P;
         down = id == 1 ? DOWN_1P : DOWN_2P;
     }

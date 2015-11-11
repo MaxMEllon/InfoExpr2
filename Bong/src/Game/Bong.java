@@ -12,11 +12,13 @@ import Player.User;
 public class Bong extends JApplet implements Runnable, KeyListener
 {
     private static final long serialVersionUID = 6838266341443127470L;
+    private static final int P1 = 1, P2 = 2;
+
     public static final Size size = new Size(800, 400);
     private Field field;
     private Thread thread = null;
-    private User user1 = new User(1);
-    private User user2 = new User(2);
+    private User user1 = new User(P1, 1);
+    private User user2 = new User(P2, 2);
     private AudioClip Bgm;
 
     @Override
