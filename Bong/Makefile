@@ -13,4 +13,4 @@ exec: clean compile
 
 .PHONY: clean
 clean:
-	-rm -rf $(CLASSES) src/**/**/**/*.class
+	-rm -rf $(CLASSES) src/**/**/*.class src/**/**/**/*.class
