@@ -10,7 +10,8 @@ public class BarCreator
     {
         Bar bar;
         Color color = playerId == 1 ? Color.BLUE : Color.RED;
-        Point pos = playerId == 1 ? new Point(0, 0) : new Point(Bong.size.Width()-10, 0);
+        Point pos = playerId == 1 ? new Point(0, Bong.size.Height() / 2)
+                                  : new Point(Bong.size.Width()-10, Bong.size.Height() / 2);
         switch (barId) {
         case 0:
             bar = new Bar(color, pos);

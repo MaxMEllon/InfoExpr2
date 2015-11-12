@@ -12,6 +12,7 @@ public class Bar extends BongPanel
     private static final long serialVersionUID = 4286321766529401859L;
 
     protected Size size;
+    protected Size arcSize;
     protected Color color;
     protected Point postion;
     protected int speed = 30;
@@ -19,6 +20,7 @@ public class Bar extends BongPanel
     public Bar(Color color, Point pos) {
         super();
         this.resize(new Size(10, 100));
+        this.arcSize = new Size(5, 20);
         this.color = color;
         this.postion = pos;
     }
@@ -44,6 +46,6 @@ public class Bar extends BongPanel
     public void paintComponent(Graphics g) {
         this.setBounds(postion.X(), postion.Y(), size.Width(), size.Height());
         g.setColor(this.color);
-        g.fillRect(0, 0, size.Width(), size.Height());
+        g.fillRoundRect(0, 0, size.Width(), size.Height(), arcSize.Width(), arcSize.Height());
     }
 }
