@@ -10,8 +10,7 @@ public abstract class Player
     protected int id;
 
     protected Player(int id) {
-        bar = BarCreator.create(id, 0);
-        this.id = id;
+        this(id, 0);
     }
 
     protected Player(int id, int barId) {
