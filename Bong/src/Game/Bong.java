@@ -24,7 +24,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
     @Override
     public void init() {
         this.setSize(size.Width(), size.Height());
-        this.field = new Field(size, this.getGraphics());
+        this.field = new Field(size);
         field.addBar(user1.getBar());
         field.addBar(user2.getBar());
         this.setContentPane(field);
@@ -70,20 +70,22 @@ public class Bong extends JApplet implements Runnable, KeyListener
 
     @Override
     public void keyPressed(KeyEvent e) {
-        this.user2.pressed(e);
-        this.user1.pressed(e);
+        if (! threadSuspended) {
+            this.user2.pressed(e);
+            this.user1.pressed(e);
+        }
         this.execPause(e);
         repaint();
     }
-    
+
     public synchronized void execPause(KeyEvent e) {
         int key = e.getKeyCode();
         System.out.println(key);
         if (key == PAUSE) {
-        	threadSuspended = true;
+            threadSuspended = true;
         } else if (key == RESTART) {
-        	threadSuspended = false;
-        	notify();
+            threadSuspended = false;
+            notify();
         }
     }
 
