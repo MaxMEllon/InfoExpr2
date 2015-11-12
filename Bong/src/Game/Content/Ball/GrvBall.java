@@ -13,24 +13,28 @@ public class GrvBall extends Ball
         super();
         super.color = Color.WHITE;
         super.changeSpeed(2);
-        this.vector = new Vector(Bong.size.Width()/2, Bong.size.Height()/2, 7, -4);
+        this.vector = new Vector(Bong.size.Width()/2, Bong.size.Height()/2, 4, -2);
     }
     public void move() {
         if (vector.x >= Bong.size.Width()) {
             vector.reverceX();
+            vector.x = Bong.size.Width() - (size.Width()+1);
         }
         if (vector.y >= Bong.size.Height()) {
             vector.y = Bong.size.Height();
-            changeSpeedY(vector.dy-1);
+            if (vector.dy >= -2) { changeSpeedY(vector.dy-1); }
             vector.reverceY();
+            vector.y = Bong.size.Height() - (size.Height()+1);
         }
         if (vector.x <= 0) {
             vector.reverceX();
+            vector.x = size.Width()+1;
         }
         if (vector.y <= 0) {
             vector.y = 0;
-            changeSpeedY(vector.dy+1);
+            if (vector.dy <= 2) { changeSpeedY(vector.dy+1); }
             vector.reverceY();
+            vector.y = size.Height()+1;
         }
         vector.x += vector.dx;
         vector.y += vector.dy;
