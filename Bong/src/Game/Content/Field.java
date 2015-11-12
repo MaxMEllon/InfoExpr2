@@ -17,13 +17,13 @@ public class Field extends BongPanel
     private ArrayList<Bar> bars = new ArrayList<Bar>();
     private Ball ball = BallCreator.create(1);
 
-    public Field(Size size, Graphics g) {
+    public Field(Size size) {
         super(size);
         this.setBounds(0, 0, size.Width(), size.Height());
         this.add(ball);
     }
 
-    public Field(int width, int height, Graphics g) {
+    public Field(int width, int height) {
         super(new Size(width, height));
         this.add(ball);
     }
