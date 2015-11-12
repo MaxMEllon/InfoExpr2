@@ -1,16 +1,18 @@
-JAVA = javac
-SOURCES = $(wildcard src/**/*.java)
-CLASSES = $(addprefix ./, $(SOURCES:.java=.class))
-FLAGS = -encoding UTF-8 -Xlint:deprecation
+JAVA       = javac
+SOURCES    = $(wildcard src/**/*.java)
+FLAGS      = -encoding UTF-8 -Xlint:deprecation
 CLASS_PATH = -classpath src/
-APPLET = appletviewer
+BUILD_DIR  = bin/
+BUILD_PATH = -d $(BUILD_DIR)
+APPLET     = appletviewer
 
 compile:
-	$(JAVA) $(FLAGS) $(CLASS_PATH) $(SOURCES)
+	@[ -d $(BUILD_DIR) ] || mkdir -p $(BUILD_DIR)
+	$(JAVA) $(FLAGS) $(CLASS_PATH) $(BUILD_PATH) $(SOURCES)
 
 exec: clean compile
 	$(APPLET) index.html
 
 .PHONY: clean
 clean:
-	-rm -rf $(CLASSES) src/**/**/*.class src/**/**/**/*.class
+	-rm -rf $(BUILD_DIR)
