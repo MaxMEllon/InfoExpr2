@@ -32,7 +32,6 @@ public class Bong extends JApplet implements Runnable, KeyListener
         field.addBar(user2.getBar());
         URL url = getDocumentBase();
         this.Bgm = getAudioClip(url, "../assets/bgm/01.mid");
-        this.Bgm.loop();
         this.setContentPane(field);
         this.setFocusable(true);
         this.addKeyListener(this);
@@ -63,7 +62,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
 
     @Override
     public void start() {
-        this.Bgm.play();
+        this.Bgm.loop();
         if (thread == null) {
             thread = new Thread(this);
             thread.start();
