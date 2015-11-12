@@ -1,6 +1,6 @@
 JAVA       = javac
 SOURCES    = $(wildcard src/**/*.java)
-FLAGS      = -encoding UTF-8 -Xlint:deprecation
+FLAGS      = -encoding UTF-8 -Xlint:deprecation -Xdiags:verbose -J-Dfile.encoding=UTF-8
 CLASS_PATH = -classpath src/
 BUILD_DIR  = bin/
 BUILD_PATH = -d $(BUILD_DIR)
