@@ -13,6 +13,9 @@ public class Bong extends JApplet implements Runnable, KeyListener
     private static final int P1 = 1, P2 = 2;
 
     public static final Size size = new Size(800, 400);
+    public static boolean threadSuspended = false;
+    public static final int PAUSE = 80;
+    public static final int RESTART = 82;
     private Field field;
     private Thread thread = null;
     private User user1 = new User(P1, 1);
@@ -34,6 +37,13 @@ public class Bong extends JApplet implements Runnable, KeyListener
         Thread thisThread = Thread.currentThread();
         while (thread == thisThread) {
             while ( true ) {
+                while (threadSuspended) { // PAUSE
+                    synchronized(this) {
+                        try {
+                            wait();
+                        } catch (InterruptedException e) { }
+                    }
+                }
                 this.repaint();
                 field.update();
                 try {
@@ -62,7 +72,19 @@ public class Bong extends JApplet implements Runnable, KeyListener
     public void keyPressed(KeyEvent e) {
         this.user2.pressed(e);
         this.user1.pressed(e);
+        this.execPause(e);
         repaint();
+    }
+    
+    public synchronized void execPause(KeyEvent e) {
+        int key = e.getKeyCode();
+        System.out.println(key);
+        if (key == PAUSE) {
+        	threadSuspended = true;
+        } else if (key == RESTART) {
+        	threadSuspended = false;
+        	notify();
+        }
     }
 
     @Override
