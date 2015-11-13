@@ -10,6 +10,10 @@ public class Size
         this.height = height;
     }
 
+    public boolean isEqual(Size size) {
+        return this.width == size.Width() && this.height == size.Height();
+    }
+
     public int Width() { return this.width; }
     public int Height() { return this.height; }
 }

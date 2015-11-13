@@ -2,6 +2,7 @@ package Game.Content.Bar;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import Common.BongPanel;
 import Common.Point;
 import Common.Size;
@@ -45,7 +46,8 @@ public class Bar extends BongPanel
     @Override
     public void paintComponent(Graphics g) {
         this.setBounds(postion.X(), postion.Y(), size.Width(), size.Height());
-        g.setColor(this.color);
-        g.fillRoundRect(0, 0, size.Width(), size.Height(), arcSize.Width(), arcSize.Height());
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setColor(this.color);
+        g2.fill3DRect(0, 0, size.Width(), size.Height(), false);
     }
 }

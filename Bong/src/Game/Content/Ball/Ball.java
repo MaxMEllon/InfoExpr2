@@ -38,14 +38,12 @@ public class Ball extends BongPanel
             vector.reverceY();
             vector.y = size.Height() + 1;
         }
-        vector.x += vector.dx;
-        vector.y += vector.dy;
+        vector.move();
         this.setBounds(vector.x, vector.y, size.Width(), size.Height());
     }
 
-    public void changeSpeed(int speed) {
-        this.vector.dx = speed;
-        this.vector.dy = speed;
+    public boolean isEqual(Ball ball) {
+        return this.color == ball.color && this.vector == ball.vector;
     }
 
     @Override

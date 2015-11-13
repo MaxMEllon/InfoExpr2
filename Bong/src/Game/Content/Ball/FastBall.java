@@ -11,7 +11,7 @@ public class FastBall extends Ball
     public FastBall() {
         super();
         super.color = Color.BLUE;
-        super.changeSpeed(2);
+        super.vector.changeSpeed(2);
         super.vector = new Vector(Bong.size.Width()/2, Bong.size.Height()/2, 8, 3);
     }
 }

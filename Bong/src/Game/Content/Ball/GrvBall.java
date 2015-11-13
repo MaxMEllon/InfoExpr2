@@ -12,7 +12,7 @@ public class GrvBall extends Ball
     public GrvBall() {
         super();
         super.color = Color.WHITE;
-        super.changeSpeed(2);
+        super.vector.changeSpeed(2);
         this.vector = new Vector(Bong.size.Width()/2, Bong.size.Height()/2, 4, -2);
     }
     public void move() {
