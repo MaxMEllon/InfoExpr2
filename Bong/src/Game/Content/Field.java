@@ -16,31 +16,20 @@ public class Field extends BongPanel
 {
     private static final long serialVersionUID = 6088522508841961855L;
     private static Color backGroundColor = Color.BLACK;
-    private static int CHANGE_BALL_TIMING = 3;
+    private static int CHANGE_BALL_TIMING = 1;
 
     private int boundCounter = 0;
     private ArrayList<Bar> bars = new ArrayList<Bar>();
-    private Ball ball;
-    private ArrayList<Ball> balls = new ArrayList<Ball>();
+    private Ball ball = BallCreator.create(0);
 
     public Field(Size size) {
         super(size);
-        createBalls();
         this.setBounds(0, 0, size.Width(), size.Height());
         this.add(ball);
     }
 
     public Field(int width, int height) {
-        super(new Size(width, height));
-        createBalls();
-        this.add(ball);
-    }
-
-    private void createBalls() {
-        for (int k = 0; k < BallCreator.BALL_TYPE; k++) {
-            balls.add(BallCreator.create(k));
-        }
-        ball = balls.get(0);
+        this(new Size(width, height));
     }
 
     public void addBar(Bar bar) {
@@ -64,7 +53,7 @@ public class Field extends BongPanel
 
     private void boundBall()
     {
-        // if (boundCounter == CHANGE_BALL_TIMING) { changeBallByRandom(); }
+        if (boundCounter == CHANGE_BALL_TIMING) { changeBallByRandom(); }
         ball.vector.reverceX();
         ball.vector.reverceY();
         boundCounter++;
@@ -72,8 +61,11 @@ public class Field extends BongPanel
 
     private void changeBallByRandom() {
         Vector vec = ball.vector;
-        ball = balls.get((int) (Math.random() * BallCreator.BALL_TYPE));
-        ball.vector = vec;
+        this.remove(ball);
+        ball = BallCreator.create((int) (Math.random() * BallCreator.BALL_TYPE));
+        ball.vector.x = vec.x;
+        ball.vector.y = vec.y;
+        this.add(ball);
         boundCounter = 0;
     }
 
