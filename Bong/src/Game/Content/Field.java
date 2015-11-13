@@ -2,6 +2,7 @@ package Game.Content;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.lang.Math;
 import Common.BongPanel;
@@ -39,13 +40,13 @@ public class Field extends BongPanel
 
     public void update() {
         if (ball.vector.x <= bars.get(0).Width() + 3
-            && ball.vector.y >= bars.get(0).Y() - 10
-            && ball.vector.y <= bars.get(0).Y() + bars.get(0).Height() + 10) {
+            && ball.vector.y >= bars.get(0).Y() - 5
+            && ball.vector.y <= bars.get(0).Y() + bars.get(0).Height() + 5) {
             boundBall();
         }
         if (ball.vector.x >= Bong.size.Width() - bars.get(1).Width() + 3
-            && ball.vector.y >= bars.get(1).Y() - 10
-            && ball.vector.y <= bars.get(1).Y() + bars.get(1).Height() + 10) {
+            && ball.vector.y >= bars.get(1).Y() - 5
+            && ball.vector.y <= bars.get(1).Y() + bars.get(1).Height() + 5) {
             boundBall();
         }
         ball.move();
@@ -57,6 +58,22 @@ public class Field extends BongPanel
         ball.vector.reverceX();
         ball.vector.reverceY();
         boundCounter++;
+    }
+
+    public void swapBar() {
+        Bar tmp = bars.get(0);
+        bars.set(0, bars.get(1));
+        bars.set(1, tmp);
+    }
+
+    private void changeBall(int ballId) {
+        Vector vec = ball.vector;
+        this.remove(ball);
+        ball = BallCreator.create(ballId);
+        ball.vector.x = vec.x;
+        ball.vector.y = vec.y;
+        this.add(ball);
+        boundCounter = 0;
     }
 
     private void changeBallByRandom() {
@@ -74,9 +91,10 @@ public class Field extends BongPanel
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(backGroundColor);
-        g.fillRect(0, 0, size.Width(), size.Height());
-        g.setColor(Color.green);
-        g.drawLine((int)size.Width()/2, 0, (int)size.Width()/2, size.Height());
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setColor(backGroundColor);
+        g2.fillRect(0, 0, size.Width(), size.Height());
+        g2.setColor(Color.green);
+        g2.drawLine((int)size.Width()/2, 0, (int)size.Width()/2, size.Height());
     }
 }
