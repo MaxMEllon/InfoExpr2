@@ -64,7 +64,7 @@ public class Field extends BongPanel
 
     private void boundBall()
     {
-        if (boundCounter == CHANGE_BALL_TIMING) { changeBallByRandom(); }
+        // if (boundCounter == CHANGE_BALL_TIMING) { changeBallByRandom(); }
         ball.vector.reverceX();
         ball.vector.reverceY();
         boundCounter++;
