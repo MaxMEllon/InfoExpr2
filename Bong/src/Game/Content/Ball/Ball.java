@@ -12,12 +12,13 @@ public class Ball extends BongPanel
 {
     private static final long serialVersionUID = -507966157766942319L;
     private static final Size size = new Size(20, 20);
+    protected Color color = Color.GREEN;
 
     public Vector vector;
 
     public Ball() {
         super(size);
-        this.vector = new Vector(Bong.size.Width()/2, Bong.size.Height()/2, 1, 1);
+        this.vector = new Vector(Bong.size.Width()/2, Bong.size.Height()/2, 2, 2);
     }
 
     public void move() {
@@ -52,7 +53,7 @@ public class Ball extends BongPanel
         super.paintComponent(g);
         g.setColor(Field.getBackGroundColor());
         g.fillRect(0, 0, size.Width(), size.Height());
-        g.setColor(Color.GREEN);
+        g.setColor(this.color);
         g.fillOval(0, 0, size.Width(), size.Height());
     }
 }
