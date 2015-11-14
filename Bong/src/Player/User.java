@@ -36,7 +36,7 @@ public class User extends Player
     public void execSkill() {
     }
 
-    public void pressed(KeyEvent e) {
+    public void onPress(KeyEvent e) {
         int key = e.getKeyCode();
         if (key == up) {
             this.direction = -1;

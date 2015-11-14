@@ -40,19 +40,23 @@ public class Bong extends JApplet implements Runnable, KeyListener
         Thread thisThread = Thread.currentThread();
         while (thread == thisThread) {
             while ( true ) {
-                while (threadSuspended) { // PAUSE
-                    synchronized(this) {
-                        try {
-                            wait();
-                        } catch (InterruptedException e) {
-                            System.out.println("F:run Thread error");
-                        }
-                    }
-                }
+                this.pauseIfNeeded();
                 this.repaint();
                 field.update();
                 try {
                     Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    System.out.println("F:run Thread error");
+                }
+            }
+        }
+    }
+
+    private void pauseIfNeeded() {
+        while (threadSuspended) {
+            synchronized(this) {
+                try {
+                    wait();
                 } catch (InterruptedException e) {
                     System.out.println("F:run Thread error");
                 }
@@ -77,14 +81,14 @@ public class Bong extends JApplet implements Runnable, KeyListener
     @Override
     public void keyPressed(KeyEvent e) {
         if (! threadSuspended) {
-            this.user2.pressed(e);
-            this.user1.pressed(e);
+            this.user2.onPress(e);
+            this.user1.onPress(e);
         }
-        this.execPause(e);
+        this.pauseAsync(e);
         repaint();
     }
 
-    public synchronized void execPause(KeyEvent e) {
+    public synchronized void pauseAsync(KeyEvent e) {
         int key = e.getKeyCode();
         if (key == PAUSE) {
             threadSuspended = true;
