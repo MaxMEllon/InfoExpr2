@@ -26,5 +26,5 @@ public abstract class Player
 
     public abstract void execSkill();
 
-    public abstract void pressed(KeyEvent e);
+    public abstract void onPress(KeyEvent e);
 }
