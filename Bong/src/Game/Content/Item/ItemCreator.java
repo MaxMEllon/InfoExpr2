@@ -13,8 +13,10 @@ public class ItemCreator
             break;
         case 1:
             item = new Item();
+            break;
         case 2:
             item = new Item();
+            break;
         default:
             item = null;
         }
