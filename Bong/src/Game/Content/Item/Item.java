@@ -16,15 +16,13 @@ public class Item extends BongPanel
     public Vector vector;
     protected Point position;
     
-    public Item()
-    {
+    public Item() {
         super(size);
         this.vector = new Vector(Bong.size.Width()/2, Bong.size.Height()/2, 0, 1);
     }
     
-    public void move()
-    {
-        if (vector.y >= Bong.size.Height()) {
+    public void move() {
+        if (vector.y + 30 >= Bong.size.Height()) {
             vector.reverceY();
             vector.y = Bong.size.Height() - (size.Height() + 1);
         }
@@ -33,12 +31,10 @@ public class Item extends BongPanel
             vector.y = size.Height() + 1;
         }
         vector.move();
+        this.setBounds(vector.x, vector.y, size.Width(), size.Height());
     }
     
-    public void Banish()
-    {
-        
-        
+    public void Banish() {
     }
     
 }

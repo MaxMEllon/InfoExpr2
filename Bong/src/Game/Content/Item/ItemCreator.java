@@ -11,12 +11,6 @@ public class ItemCreator
         case 0:
             item = new Item();
             break;
-        case 1:
-            item = new Item();
-            break;
-        case 2:
-            item = new Item();
-            break;
         default:
             item = null;
         }

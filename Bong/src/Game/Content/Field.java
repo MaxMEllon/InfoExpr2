@@ -31,6 +31,7 @@ public class Field extends BongPanel
         super(size);
         this.setBounds(0, 0, size.Width(), size.Height());
         this.add(ball);
+        this.add(item);
     }
 
     public Field(int width, int height) {
@@ -54,6 +55,9 @@ public class Field extends BongPanel
             boundBall();
         }
         ball.move();
+        if (item != null) {
+            item.move();
+        }
     }
 
     private void boundBall()
@@ -86,7 +90,7 @@ public class Field extends BongPanel
     private void createItemByRandom() {
         Vector vec = item.vector;
         item = ItemCreator.create((int) (Math.random() * ItemCreator.ITEM_TIPE));
-        ball.vector.setPoint(vec.getPoint());
+        item.vector.setPoint(vec.getPoint());
         this.add(item);
     }
 
