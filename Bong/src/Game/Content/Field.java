@@ -5,7 +5,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.lang.Math;
+
 import Common.BongPanel;
+import Common.Point;
 import Common.Size;
 import Common.Vector;
 import Game.Bong;
@@ -25,13 +27,12 @@ public class Field extends BongPanel
     private int boundCounter = 0;
     private ArrayList<Bar> bars = new ArrayList<Bar>();
     private Ball ball = BallCreator.create(0);
-    private Item item = ItemCreator.create(0);
+    private Item item;
 
     public Field(Size size) {
-        super(size);
+        super(new Point(0, 0), size);
         this.setBounds(0, 0, size.Width(), size.Height());
         this.add(ball);
-        this.add(item);
     }
 
     public Field(int width, int height) {
@@ -55,9 +56,6 @@ public class Field extends BongPanel
             boundBall();
         }
         ball.move();
-        if (item != null) {
-            item.move();
-        }
     }
 
     private void boundBall()
@@ -92,7 +90,8 @@ public class Field extends BongPanel
         item = ItemCreator.create((int) (Math.random() * ItemCreator.ITEM_TIPE));
         item.vector.setPoint(vec.getPoint());
         this.add(item);
-    }
+    }    
+    
 
     public static Color getBackGroundColor() { return backGroundColor; }
 
