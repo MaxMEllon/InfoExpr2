@@ -12,16 +12,20 @@ import Game.Bong;
 import Game.Content.Ball.Ball;
 import Game.Content.Ball.BallCreator;
 import Game.Content.Bar.Bar;
+import Game.Content.Item.ItemCreator;
+import Game.Content.Item.Item;
 
 public class Field extends BongPanel
 {
     private static final long serialVersionUID = 6088522508841961855L;
     private static Color backGroundColor = Color.BLACK;
     private static int CHANGE_BALL_TIMING = 1;
+    private static int CREATE_ITEM_TIMING = 1;
 
     private int boundCounter = 0;
     private ArrayList<Bar> bars = new ArrayList<Bar>();
     private Ball ball = BallCreator.create(0);
+    private Item item = ItemCreator.create(0);
 
     public Field(Size size) {
         super(size);
@@ -55,6 +59,7 @@ public class Field extends BongPanel
     private void boundBall()
     {
         if (boundCounter == CHANGE_BALL_TIMING) { changeBallByRandom(); }
+        if (boundCounter == CREATE_ITEM_TIMING) { createItemByRandom(); }
         ball.vector.reverceX();
         ball.vector.reverceY();
         boundCounter++;
@@ -96,5 +101,13 @@ public class Field extends BongPanel
         g2.fillRect(0, 0, size.Width(), size.Height());
         g2.setColor(Color.green);
         g2.drawLine((int)size.Width()/2, 0, (int)size.Width()/2, size.Height());
+    }
+    
+    private void createItemByRandom() {
+        Vector vec = item.vector;
+        item = ItemCreator.create((int) (Math.random() * ItemCreator.ITEM_TIPE));
+        item.vector.x = vec.x;
+        item.vector.y = vec.y;
+        this.add(item);
     }
 }
