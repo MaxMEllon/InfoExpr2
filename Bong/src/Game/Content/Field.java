@@ -60,8 +60,7 @@ public class Field extends BongPanel
     {
         if (boundCounter == CHANGE_BALL_TIMING) { changeBallByRandom(); }
         if (boundCounter == CREATE_ITEM_TIMING) { createItemByRandom(); }
-        ball.vector.reverceX();
-        ball.vector.reverceY();
+        ball.vector.reverce();
         boundCounter++;
     }
 
@@ -75,20 +74,20 @@ public class Field extends BongPanel
         Vector vec = ball.vector;
         this.remove(ball);
         ball = BallCreator.create(ballId);
-        ball.vector.x = vec.x;
-        ball.vector.y = vec.y;
+        ball.vector.setPoint(vec.getPoint());
         this.add(ball);
         boundCounter = 0;
     }
 
     private void changeBallByRandom() {
-        Vector vec = ball.vector;
-        this.remove(ball);
-        ball = BallCreator.create((int) (Math.random() * BallCreator.BALL_TYPE));
-        ball.vector.x = vec.x;
-        ball.vector.y = vec.y;
-        this.add(ball);
-        boundCounter = 0;
+        this.changeBall((int)(Math.random() * BallCreator.BALL_TYPE));
+    }
+
+    private void createItemByRandom() {
+        Vector vec = item.vector;
+        item = ItemCreator.create((int) (Math.random() * ItemCreator.ITEM_TIPE));
+        ball.vector.setPoint(vec.getPoint());
+        this.add(item);
     }
 
     public static Color getBackGroundColor() { return backGroundColor; }
@@ -101,13 +100,5 @@ public class Field extends BongPanel
         g2.fillRect(0, 0, size.Width(), size.Height());
         g2.setColor(Color.green);
         g2.drawLine((int)size.Width()/2, 0, (int)size.Width()/2, size.Height());
-    }
-    
-    private void createItemByRandom() {
-        Vector vec = item.vector;
-        item = ItemCreator.create((int) (Math.random() * ItemCreator.ITEM_TIPE));
-        item.vector.x = vec.x;
-        item.vector.y = vec.y;
-        this.add(item);
     }
 }
