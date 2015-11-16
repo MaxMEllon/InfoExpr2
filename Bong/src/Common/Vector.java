@@ -1,5 +1,7 @@
 package Common;
 
+import Common.Point;
+
 public class Vector
 {
     public int x;
@@ -35,6 +37,24 @@ public class Vector
             && this.dx == vec.dx && this.dy == vec.dy;
     }
 
+    public Point getPoint() { return new Point(this.x, this.y); }
+
+    public void setPoint(Point pos) {
+        this.x = pos.X();
+        this.y = pos.Y();
+    }
+
+    public void setPoint(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
     public void reverceX() { this.dx *= -1; }
+
     public void reverceY() { this.dy *= -1; }
+
+    public void reverce() {
+        this.reverceX();
+        this.reverceY();
+    }
 }
