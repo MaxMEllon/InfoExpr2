@@ -5,26 +5,32 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.lang.Math;
+
 import Common.BongPanel;
+import Common.Point;
 import Common.Size;
 import Common.Vector;
 import Game.Bong;
 import Game.Content.Ball.Ball;
 import Game.Content.Ball.BallCreator;
 import Game.Content.Bar.Bar;
+import Game.Content.Item.ItemCreator;
+import Game.Content.Item.Item;
 
 public class Field extends BongPanel
 {
     private static final long serialVersionUID = 6088522508841961855L;
     private static Color backGroundColor = Color.BLACK;
     private static int CHANGE_BALL_TIMING = 1;
+    private static int CREATE_ITEM_TIMING = 1;
 
     private int boundCounter = 0;
     private ArrayList<Bar> bars = new ArrayList<Bar>();
     private Ball ball = BallCreator.create(0);
+    private Item item;
 
     public Field(Size size) {
-        super(size);
+        super(new Point(0, 0), size);
         this.setBounds(0, 0, size.Width(), size.Height());
         this.add(ball);
     }
@@ -55,8 +61,8 @@ public class Field extends BongPanel
     private void boundBall()
     {
         if (boundCounter == CHANGE_BALL_TIMING) { changeBallByRandom(); }
-        ball.vector.reverceX();
-        ball.vector.reverceY();
+        if (boundCounter == CREATE_ITEM_TIMING) { createItemByRandom(); }
+        ball.vector.reverce();
         boundCounter++;
     }
 
@@ -70,21 +76,22 @@ public class Field extends BongPanel
         Vector vec = ball.vector;
         this.remove(ball);
         ball = BallCreator.create(ballId);
-        ball.vector.x = vec.x;
-        ball.vector.y = vec.y;
+        ball.vector.setPoint(vec.getPoint());
         this.add(ball);
         boundCounter = 0;
     }
 
     private void changeBallByRandom() {
-        Vector vec = ball.vector;
-        this.remove(ball);
-        ball = BallCreator.create((int) (Math.random() * BallCreator.BALL_TYPE));
-        ball.vector.x = vec.x;
-        ball.vector.y = vec.y;
-        this.add(ball);
-        boundCounter = 0;
+        this.changeBall((int)(Math.random() * BallCreator.BALL_TYPE));
     }
+
+    private void createItemByRandom() {
+        Vector vec = item.vector;
+        item = ItemCreator.create((int) (Math.random() * ItemCreator.ITEM_TIPE));
+        item.vector.setPoint(vec.getPoint());
+        this.add(item);
+    }    
+    
 
     public static Color getBackGroundColor() { return backGroundColor; }
 
