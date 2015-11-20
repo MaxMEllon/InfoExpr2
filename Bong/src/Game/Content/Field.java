@@ -16,6 +16,7 @@ import Game.Content.Ball.BallCreator;
 import Game.Content.Bar.Bar;
 import Game.Content.Item.ItemCreator;
 import Game.Content.Item.Item;
+import Player.Life;
 
 public class Field extends BongPanel
 {
@@ -26,6 +27,7 @@ public class Field extends BongPanel
 
     private int boundCounter = 0;
     private ArrayList<Bar> bars = new ArrayList<Bar>();
+    private ArrayList<Life> lifes = new ArrayList<Life>();
     private Ball ball = BallCreator.create(0);
     private Item item;
 
@@ -42,6 +44,11 @@ public class Field extends BongPanel
     public void addBar(Bar bar) {
         bars.add(bar);
         this.add(bar);
+    }
+    
+    public void addLife(Life life) {
+        lifes.add(life);
+        this.add(life);
     }
 
     public void update() {
