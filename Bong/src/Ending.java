@@ -89,6 +89,7 @@ public class Ending extends JApplet implements Runnable
             if (posy <= (-SPACE * credit.size())) {
                 //System.out.print("stop"); /*debug*/
                 stop();
+                System.exit(0);
             }
             repaint();
             try {
