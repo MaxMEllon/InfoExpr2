@@ -3,8 +3,9 @@ package Game;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.applet.*;
-import java.net.URL;
+
 import javax.swing.*;
+
 import Common.Size;
 import Game.Content.Field;
 import Player.User;
