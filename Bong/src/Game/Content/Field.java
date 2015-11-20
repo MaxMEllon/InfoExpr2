@@ -49,10 +49,10 @@ public class Field extends BongPanel
     
     public void addLife(int playerId, int lifePoint) {
         for ( i = 0; i < lifePoint; i++) {
-            life = new Life(playerId, lifePoint);
+            life = new Life(playerId, i);
             lifes.add(life);
+            this.add(life);
         }
-        this.add(life);
     }
     
     public void decreaseLife(Life life) {

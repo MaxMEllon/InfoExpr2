@@ -16,8 +16,8 @@ public class Life extends BongPanel {
     public Life (int playerId, int lifePoint) {
         int lifeSpace = 0;
         
-        if ( lifePoint != 0 ) {
-            lifeSpace = 2;
+        if ( lifePoint != 1 ) {
+            lifeSpace = 5;
         }
         if ( playerId == 1 ) {
             pos = new Point(lifePoint * 5 + lifeSpace, 0);
@@ -30,9 +30,10 @@ public class Life extends BongPanel {
     
     @Override
     public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        this.setBounds(pos.X(), pos.Y(), size.Width(), size.Height());
         Graphics2D g2 = (Graphics2D) g;
-        this.setBounds(pos.X(), pos.Y(), 5, 5);
         g2.setColor(this.color);
-        g2.fill3DRect(0, 0, 100, 5, false);
+        g2.fill3DRect(pos.X(), pos.Y(), size.Width(), size.Height(), false);
     }
 }
