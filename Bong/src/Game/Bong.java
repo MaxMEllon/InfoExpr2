@@ -29,6 +29,8 @@ public class Bong extends JApplet implements Runnable, KeyListener
         this.field = new Field(size);
         field.addBar(user1.getBar());
         field.addBar(user2.getBar());
+        field.addLife(user1.getlife());
+        field.addLife(user2.getlife());
         this.Bgm = getAudioClip(getDocumentBase(), "../assets/bgm/01.mid");
         this.setContentPane(field);
         this.setFocusable(true);
