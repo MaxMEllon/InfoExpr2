@@ -18,6 +18,11 @@ $ make exec
 # boot appletviewer
 ```
 
+### 音楽が流れない開発者へ
+
+Bong/etc/.java.policy をホームディレクトリに配置してください．
+Bong/assets/bgm/ 以下のファイルに対して，読み込み権限を付与します
+
 ## TODO
 
 - [Todoリスト](https://github.com/MaxMEllon/InfoExpr2/wiki/Todo)

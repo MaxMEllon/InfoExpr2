@@ -7,16 +7,23 @@ public class BongPanel extends JPanel
 {
     private static final long serialVersionUID = -6626211277264484350L;
 
+    protected Point point;
     protected Size size;
 
     public BongPanel() {
         super();
+        this.point = new Point(-1, -1);
         this.size = new Size(-1, -1);
     }
 
     public BongPanel(Size size) {
-        super();
+        this();
         this.size = size;
+    }
+    
+    public BongPanel(Point point, Size size) {
+        this(size);
+        this.point = point;
     }
 
     public void setMySize(Size size) {
@@ -32,6 +39,14 @@ public class BongPanel extends JPanel
         return this.size.Height();
     }
 
+    public boolean isHit(Area area) {
+        return false;
+    }
+    
+    public Area getArea() {
+        return new Area(this.point, this.size);
+    }
+    
     public void callbackMethod() {
         _callbacks.callbackMethod();
     }
