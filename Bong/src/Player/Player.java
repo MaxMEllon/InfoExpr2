@@ -2,14 +2,17 @@ package Player;
 
 import java.awt.event.KeyEvent;
 
+import Game.Content.Life;
 import Game.Content.Bar.*;
 
 public abstract class Player
 {
     protected Bar bar;
+    
     protected int direction = 0;
-    protected int id;
-    protected Life life = new Life(5) ;
+    public int id;
+    protected int lifePoint = 5;
+    protected Life life;
     protected Player(int id) {
         this(id, 0);
     }
@@ -22,9 +25,14 @@ public abstract class Player
     public Bar getBar() {
         return this.bar;
     }
-    public Life getlife() {
-        return this.life;
+    
+    public int getLifePoint() {
+        return this.lifePoint;
     }
+    
+    public void decreaseLifePoint() {
+        this.lifePoint--;
+    };
 
     public abstract void moveBar();
 

@@ -16,7 +16,6 @@ import Game.Content.Ball.BallCreator;
 import Game.Content.Bar.Bar;
 import Game.Content.Item.ItemCreator;
 import Game.Content.Item.Item;
-import Player.Life;
 
 public class Field extends BongPanel
 {
@@ -26,10 +25,12 @@ public class Field extends BongPanel
     private static int CREATE_ITEM_TIMING = 1;
 
     private int boundCounter = 0;
+    private int i;
     private ArrayList<Bar> bars = new ArrayList<Bar>();
     private ArrayList<Life> lifes = new ArrayList<Life>();
     private Ball ball = BallCreator.create(0);
     private Item item;
+    private Life life;
 
     public Field(Size size) {
         super(new Point(0, 0), size);
@@ -46,9 +47,16 @@ public class Field extends BongPanel
         this.add(bar);
     }
     
-    public void addLife(Life life) {
-        lifes.add(life);
+    public void addLife(int playerId, int lifePoint) {
+        for ( i = 0; i < lifePoint; i++) {
+            life = new Life(playerId, lifePoint);
+            lifes.add(life);
+        }
         this.add(life);
+    }
+    
+    public void decreaseLife(Life life) {
+        
     }
 
     public void update() {
@@ -65,8 +73,7 @@ public class Field extends BongPanel
         ball.move();
     }
 
-    private void boundBall()
-    {
+    private void boundBall() {
         if (boundCounter == CHANGE_BALL_TIMING) { changeBallByRandom(); }
         if (boundCounter == CREATE_ITEM_TIMING) { createItemByRandom(); }
         ball.vector.reverce();
@@ -97,8 +104,7 @@ public class Field extends BongPanel
         item = ItemCreator.create((int) (Math.random() * ItemCreator.ITEM_TIPE));
         item.vector.setPoint(vec.getPoint());
         this.add(item);
-    }    
-    
+    }
 
     public static Color getBackGroundColor() { return backGroundColor; }
 
