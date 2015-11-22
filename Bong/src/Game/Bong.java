@@ -8,7 +8,6 @@ import javax.swing.*;
 import Common.Size;
 import Game.Content.Field;
 import Player.User;
-import Page.Title;
 
 public class Bong extends JApplet implements Runnable, KeyListener
 {

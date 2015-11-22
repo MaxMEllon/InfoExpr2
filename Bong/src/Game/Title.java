@@ -1,4 +1,4 @@
-package Page;
+package Game;
 
 import java.awt.Color;
 import java.awt.Label;

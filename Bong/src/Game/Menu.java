@@ -1,8 +1,8 @@
-package Page;
+package Game;
 
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
-import Game.Bong;
+
 import Common.BongPanel;
 import Common.Size;
 
