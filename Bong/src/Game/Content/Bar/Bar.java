@@ -33,7 +33,7 @@ public class Bar extends BongPanel
 
     public void move(int direction) {
         int y = this.position.Y() + direction * speed;
-        if (y <= 0) { y = 0; }
+        if (y <= 20) { y = 20; }
         if (y + size.Height() >= Bong.size.Height()) { y = Bong.size.Height() - size.Height(); }
         this.position.move(this.position.X(), y);
     }
