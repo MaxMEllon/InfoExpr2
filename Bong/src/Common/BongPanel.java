@@ -3,10 +3,11 @@ package Common;
 import javax.swing.JPanel;
 
 import Game.Content.Ball.Ball;
+import Common.Area;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
-import java.awt.geom.Area;
+import java.awt.geom.*;
 
 public class BongPanel extends JPanel
 {
