@@ -15,6 +15,7 @@ import javax.swing.JApplet;
 
 public class Ending extends JApplet implements Runnable
 {
+    private static final long serialVersionUID = 2794452085978073515L;
     private final int SPEED = 3;        // 流速
     private final int SPACE = 50;       // 行間
     private final int FONTSIZE = 18;    // フォントサイズ
