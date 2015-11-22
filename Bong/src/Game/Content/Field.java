@@ -25,7 +25,6 @@ public class Field extends BongPanel
     private static int CREATE_ITEM_TIMING = 1;
 
     private int boundCounter = 0;
-    private int i;
     private ArrayList<Bar> bars = new ArrayList<Bar>();
     private ArrayList<Life> lifes = new ArrayList<Life>();
     private Ball ball = BallCreator.create(0);
@@ -48,15 +47,15 @@ public class Field extends BongPanel
     }
     
     public void addLife(int playerId, int lifePoint) {
-        for ( i = 0; i < lifePoint; i++) {
-            life = new Life(playerId, i);
-            lifes.add(life);
-            this.add(life);
-        }
+        life = new Life(playerId, lifePoint);
+        lifes.add(life);
+        this.add(life);
     }
     
-    public void decreaseLife(Life life) {
-        
+    public void decreaseLife(int PlayerId) {
+        Life life = lifes.get(PlayerId);
+        life.setSize(life.Width() - 20, life.Height());
+        lifes.set(PlayerId, life);
     }
 
     public void update() {
@@ -64,8 +63,11 @@ public class Field extends BongPanel
         if (ball.vector.x <= bars.get(0).Width() + 3
             && ball.vector.y >= bars.get(0).Y() - 5
             && ball.vector.y <= bars.get(0).Y() + bars.get(0).Height() + 5) {
+            decreaseLife(0);
+            System.out.println("1p decrease Life");
             boundBall();
             System.out.println("bound 1p");
+            
         }
         // ball と2pbarの当たり判定
         if (ball.vector.x >= Bong.size.Width() - bars.get(1).Width() + 3
