@@ -11,7 +11,7 @@ public abstract class Player
     
     protected int direction = 0;
     public int id;
-    protected int lifePoint = 1;
+    protected int lifePoint = 5;
     protected Life life;
     protected Player(int id) {
         this(id, 0);

@@ -60,15 +60,19 @@ public class Field extends BongPanel
     }
 
     public void update() {
+        // ballと1pbarの当たり判定
         if (ball.vector.x <= bars.get(0).Width() + 3
             && ball.vector.y >= bars.get(0).Y() - 5
             && ball.vector.y <= bars.get(0).Y() + bars.get(0).Height() + 5) {
             boundBall();
+            System.out.println("bound 1p");
         }
+        // ball と2pbarの当たり判定
         if (ball.vector.x >= Bong.size.Width() - bars.get(1).Width() + 3
             && ball.vector.y >= bars.get(1).Y() - 5
             && ball.vector.y <= bars.get(1).Y() + bars.get(1).Height() + 5) {
             boundBall();
+            System.out.println("bound 2p");
         }
         ball.move();
     }
@@ -116,5 +120,6 @@ public class Field extends BongPanel
         g2.fillRect(0, 0, size.Width(), size.Height());
         g2.setColor(Color.green);
         g2.drawLine((int)size.Width()/2, 0, (int)size.Width()/2, size.Height());
+        g2.drawLine(0, 20, size.Width(), 20);
     }
 }

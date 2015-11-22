@@ -22,19 +22,19 @@ public class Ball extends BongPanel
     }
 
     public void move() {
-        if (vector.x >= Bong.size.Width()) {
+        if (vector.x >= Bong.size.Width()) {  //右壁での反射
             vector.reverceX();
             vector.x = Bong.size.Width() - (size.Width() + 1);
         }
-        if (vector.y >= Bong.size.Height()) {
+        if (vector.y >= Bong.size.Height()) {  // 下壁での反射
             vector.reverceY();
             vector.y = Bong.size.Height() - (size.Height() + 1);
         }
-        if (vector.x <= 0) {
+        if (vector.x <= 0) {  // 左壁での反射
             vector.reverceX();
             vector.x = size.Width() + 1;
         }
-        if (vector.y <= 0) {
+        if (vector.y <= 20) {  // 上壁での反射
             vector.reverceY();
             vector.y = size.Height() + 1;
         }

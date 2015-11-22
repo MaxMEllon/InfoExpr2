@@ -5,26 +5,31 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import Common.BongPanel;
 import Common.Point;
+import Common.Size;
 import Game.Bong;
 
 public class Life extends BongPanel {
-    protected int life;
     private static final long serialVersionUID = 4286321766529401859L;
-    private Color color = Color.ORANGE;
+    protected Size size;
+    protected Size arcSize;
+    protected Color color;
     protected Point pos;
     
     public Life (int playerId, int lifePoint) {
-        int lifeSpace = 0;
-        
-        if ( lifePoint != 1 ) {
-            lifeSpace = 5;
-        }
-        if ( playerId == 1 ) {
-            pos = new Point(lifePoint * 5 + lifeSpace, 0);
-        } else {
-            pos = new Point(Bong.size.Width() - (lifePoint * 5 + lifeSpace), 0);
-        }
+        super();
+        this.resize(new Size(50,20));
+        this.arcSize = new Size(20,5);
+        // playerIdとlifePointの応じて表示posを指定
+        this.pos = playerId == 1 ? new Point(lifePoint * (this.Width() + 10), 0)
+                : new Point(Bong.size.Width() - this.Width() - (lifePoint * (this.Width() + 10)), 0);
+        this.color = Color.ORANGE;
     }
+    
+    public void resize(Size size) {
+        super.setMySize(size);
+        this.size = size;
+    }
+    
     public int Width() { return size.Width(); }
     public int Height() { return size.Height(); }
     
