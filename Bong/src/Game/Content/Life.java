@@ -17,11 +17,11 @@ public class Life extends BongPanel {
     
     public Life (int playerId, int lifePoint) {
         super();
-        this.resize(new Size(50,20));
-        this.arcSize = new Size(20,5);
-        // playerIdとlifePointの応じて表示posを指定
-        this.pos = playerId == 1 ? new Point(lifePoint * (this.Width() + 10), 0)
-                : new Point(Bong.size.Width() - this.Width() - (lifePoint * (this.Width() + 10)), 0);
+        this.resize(new Size(lifePoint,20));
+        this.arcSize = new Size(lifePoint,5);
+        // playerIdとlifePointの応じて表示
+        this.pos = playerId == 1 ? new Point(0, 0)
+                : new Point(Bong.size.Width() - this.Width(), 0);
         this.color = Color.ORANGE;
     }
     
