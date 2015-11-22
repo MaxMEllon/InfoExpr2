@@ -25,9 +25,12 @@ public class Field extends BongPanel
     private static int CREATE_ITEM_TIMING = 1;
 
     private int boundCounter = 0;
+    private int i;
     private ArrayList<Bar> bars = new ArrayList<Bar>();
+    private ArrayList<Life> lifes = new ArrayList<Life>();
     private Ball ball = BallCreator.create(0);
     private Item item;
+    private Life life;
 
     public Field(Size size) {
         super(new Point(0, 0), size);
@@ -43,23 +46,38 @@ public class Field extends BongPanel
         bars.add(bar);
         this.add(bar);
     }
+    
+    public void addLife(int playerId, int lifePoint) {
+        for ( i = 0; i < lifePoint; i++) {
+            life = new Life(playerId, i);
+            lifes.add(life);
+            this.add(life);
+        }
+    }
+    
+    public void decreaseLife(Life life) {
+        
+    }
 
     public void update() {
+        // ballと1pbarの当たり判定
         if (ball.vector.x <= bars.get(0).Width() + 3
             && ball.vector.y >= bars.get(0).Y() - 5
             && ball.vector.y <= bars.get(0).Y() + bars.get(0).Height() + 5) {
             boundBall();
+            System.out.println("bound 1p");
         }
+        // ball と2pbarの当たり判定
         if (ball.vector.x >= Bong.size.Width() - bars.get(1).Width() + 3
             && ball.vector.y >= bars.get(1).Y() - 5
             && ball.vector.y <= bars.get(1).Y() + bars.get(1).Height() + 5) {
             boundBall();
+            System.out.println("bound 2p");
         }
         ball.move();
     }
 
-    private void boundBall()
-    {
+    private void boundBall() {
         if (boundCounter == CHANGE_BALL_TIMING) { changeBallByRandom(); }
         if (boundCounter == CREATE_ITEM_TIMING) { createItemByRandom(); }
         ball.vector.reverce();
@@ -90,8 +108,7 @@ public class Field extends BongPanel
         item = ItemCreator.create((int) (Math.random() * ItemCreator.ITEM_TIPE));
         item.vector.setPoint(vec.getPoint());
         this.add(item);
-    }    
-    
+    }
 
     public static Color getBackGroundColor() { return backGroundColor; }
 
@@ -103,5 +120,6 @@ public class Field extends BongPanel
         g2.fillRect(0, 0, size.Width(), size.Height());
         g2.setColor(Color.green);
         g2.drawLine((int)size.Width()/2, 0, (int)size.Width()/2, size.Height());
+        g2.drawLine(0, 20, size.Width(), 20);
     }
 }

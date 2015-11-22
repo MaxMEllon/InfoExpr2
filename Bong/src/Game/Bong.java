@@ -3,7 +3,6 @@ package Game;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.applet.*;
-import java.net.URL;
 import javax.swing.*;
 import Common.Size;
 import Game.Content.Field;
@@ -15,7 +14,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
     private static final int P1 = 1, P2 = 2;
     private static final int PAUSE = 80, RESTART = 82;
 
-    public static final Size size = new Size(800, 400);
+    public static final Size size = new Size(800, 420);
     public static boolean threadSuspended = false;
     private Field field;
     private Thread thread = null;
@@ -27,9 +26,11 @@ public class Bong extends JApplet implements Runnable, KeyListener
     public void init() {
         this.setSize(size.Width(), size.Height());
         this.field = new Field(size);
-        field.addBar(user1.getBar());
-        field.addBar(user2.getBar());
-        this.Bgm = getAudioClip(getDocumentBase(), "../assets/bgm/01.mid");
+        field.addBar(user1.getBar()); // 1Pbar追加
+        field.addBar(user2.getBar()); // 2Pbar追加
+        field.addLife(user1.id, user1.getLifePoint());  // 1PLife追加
+        field.addLife(user2.id, user2.getLifePoint());  // 2PLife追加
+        this.Bgm = getAudioClip(getDocumentBase(), "../assets/bgm/01.mid"); // BGM追加
         this.setContentPane(field);
         this.setFocusable(true);
         this.addKeyListener(this);
@@ -40,7 +41,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
         Thread thisThread = Thread.currentThread();
         while (thread == thisThread) {
             while ( true ) {
-                this.pauseIfNeeded();
+                this.pauseIfNeeded(); // pause処理
                 this.repaint();
                 field.update();
                 try {

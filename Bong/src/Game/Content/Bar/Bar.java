@@ -15,7 +15,7 @@ public class Bar extends BongPanel
     protected Size size;
     protected Size arcSize;
     protected Color color;
-    protected Point postion;
+    protected Point position;
     protected int speed = 30;
 
     public Bar(Color color, Point pos) {
@@ -23,7 +23,7 @@ public class Bar extends BongPanel
         this.resize(new Size(10, 100));
         this.arcSize = new Size(5, 20);
         this.color = color;
-        this.postion = pos;
+        this.position = pos;
     }
 
     public void resize(Size size) {
@@ -32,20 +32,20 @@ public class Bar extends BongPanel
     }
 
     public void move(int direction) {
-        int y = this.postion.Y() + direction * speed;
+        int y = this.position.Y() + direction * speed;
         if (y <= 0) { y = 0; }
         if (y + size.Height() >= Bong.size.Height()) { y = Bong.size.Height() - size.Height(); }
-        this.postion.move(this.postion.X(), y);
+        this.position.move(this.position.X(), y);
     }
 
-    public int X() { return postion.X(); }
-    public int Y() { return postion.Y(); }
+    public int X() { return position.X(); }
+    public int Y() { return position.Y(); }
     public int Width() { return size.Width(); }
     public int Height() { return size.Height(); }
 
     @Override
     public void paintComponent(Graphics g) {
-        this.setBounds(postion.X(), postion.Y(), size.Width(), size.Height());
+        this.setBounds(position.X(), position.Y(), size.Width(), size.Height());
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(this.color);
         g2.fill3DRect(0, 0, size.Width(), size.Height(), false);
