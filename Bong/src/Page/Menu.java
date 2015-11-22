@@ -1,4 +1,4 @@
-package Menu;
+package Page;
 
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
