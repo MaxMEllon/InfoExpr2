@@ -11,6 +11,7 @@ import Common.Point;
 import Common.Size;
 import Common.Vector;
 import Game.Bong;
+import Game.Result;
 import Game.Content.Ball.Ball;
 import Game.Content.Ball.BallCreator;
 import Game.Content.Bar.Bar;
@@ -98,6 +99,20 @@ public class Field extends BongPanel
         ball.move();
     }
 
+    public boolean showResultIfNeededAndJudgeGameEnd() {
+        if (players.get(0).Life().Point() <= 0) {
+            this.removeAll();
+            this.add(new Result(players.get(1)));
+            return true;
+        }
+        if (players.get(1).Life().Point() <= 0) {
+            this.removeAll();
+            this.add(new Result(players.get(0)));
+            return true;
+        }
+        return false;
+    }
+
     private void boundBall() {
         if (boundCounter == CHANGE_BALL_TIMING) { changeBallByRandom(); }
         if (boundCounter == CREATE_ITEM_TIMING) { createItemByRandom(); }
@@ -141,6 +156,5 @@ public class Field extends BongPanel
         g2.fillRect(0, 0, size.Width(), size.Height());
         g2.setColor(Color.green);
         g2.drawLine((int)size.Width()/2, 0, (int)size.Width()/2, size.Height());
-        g2.drawLine(0, 20, size.Width(), 20);
-    }
+        g2.drawLine(0, 20, size.Width(), 20); }
 }
