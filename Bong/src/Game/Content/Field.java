@@ -16,6 +16,8 @@ import Game.Content.Ball.BallCreator;
 import Game.Content.Bar.Bar;
 import Game.Content.Item.ItemCreator;
 import Game.Content.Item.Item;
+import Player.Player;
+import Player.User;
 
 public class Field extends BongPanel
 {
@@ -27,6 +29,7 @@ public class Field extends BongPanel
     private int boundCounter = 0;
     private ArrayList<Bar> bars = new ArrayList<Bar>();
     private ArrayList<Life> lifes = new ArrayList<Life>();
+    private ArrayList<Player> players = new ArrayList<Player>();
     private Ball ball = BallCreator.create(0);
     private Item item;
     private Life life;
@@ -41,40 +44,57 @@ public class Field extends BongPanel
         this(new Size(width, height));
     }
 
-    public void addBar(Bar bar) {
+    public void addPlayer(User p)
+    {
+        this.addBar(p.getBar());
+        this.addLife(p.getLife());
+        this.players.add(p);
+    }
+
+    private void addBar(Bar bar) {
         bars.add(bar);
         this.add(bar);
     }
-    
-    public void addLife(int playerId, int lifePoint) {
-        life = new Life(playerId, lifePoint);
+
+    private void addLife(Life life) {
         lifes.add(life);
         this.add(life);
     }
-    
-    public void decreaseLife(int PlayerId) {
-        Life life = lifes.get(PlayerId);
-        life.setSize(life.Width() - 20, life.Height());
-        lifes.set(PlayerId, life);
-    }
 
     public void update() {
-        // ballと1pbarの当たり判定
+        // ballと1P barの当たり判定
         if (ball.vector.x <= bars.get(0).Width() + 3
             && ball.vector.y >= bars.get(0).Y() - 5
             && ball.vector.y <= bars.get(0).Y() + bars.get(0).Height() + 5) {
-            decreaseLife(0);
-            System.out.println("1p decrease Life");
             boundBall();
             System.out.println("bound 1p");
-            
         }
-        // ball と2pbarの当たり判定
+        // ball と2P barの当たり判定
         if (ball.vector.x >= Bong.size.Width() - bars.get(1).Width() + 3
             && ball.vector.y >= bars.get(1).Y() - 5
             && ball.vector.y <= bars.get(1).Y() + bars.get(1).Height() + 5) {
             boundBall();
             System.out.println("bound 2p");
+        }
+        if (ball.vector.x >= Bong.size.Width()) {  //右壁での反射
+            ball.vector.reverceX();
+            ball.vector.x = Bong.size.Width() - (ball.Width() + 1);
+            System.out.println("descrease life 2p");
+            players.get(1).decreaseLife();
+        }
+        if (ball.vector.y >= Bong.size.Height()) {  // 下壁での反射
+            ball.vector.reverceY();
+            ball.vector.y = Bong.size.Height() - (ball.Height() + 1);
+        }
+        if (ball.vector.x <= 0) {  // 左壁での反射
+            ball.vector.reverceX();
+            ball.vector.x = ball.Width() + 1;
+            System.out.println("descrease life 1p");
+            players.get(0).decreaseLife();
+        }
+        if (ball.vector.y <= 20) {  // 上壁での反射
+            ball.vector.reverceY();
+            ball.vector.y = ball.Height() + 1;
         }
         ball.move();
     }
