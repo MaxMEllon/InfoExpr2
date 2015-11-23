@@ -16,13 +16,13 @@ public class Title extends JApplet
     Boolean event;
     static Label title;
     static JPanel panel = new JPanel();
-    
+
     public  Title() {
         this.setLayout(null);
-        title = new Label("Bonguu!!"); 
+        title = new Label("Bonguu!!");
         title.setBounds(200, 10,  400, 130);
         title.setFont(new Font("Arial", Font.PLAIN, 100));
-        title.setForeground(Color.YELLOW); 
+        title.setForeground(Color.YELLOW);
         title.setBackground(Color.BLACK);
         panel.setBackground(Color.BLACK);
         panel.setBounds(0, 0,  800, 400);
