@@ -10,29 +10,40 @@ import Game.Bong;
 
 public class Life extends BongPanel {
     private static final long serialVersionUID = 4286321766529401859L;
-    protected Size size;
-    protected Size arcSize;
-    protected Color color;
-    protected Point pos;
-    
+    private static final int P1 = 1;
+    private static final int P2 = 1;
+    private Size size;
+    private Color color;
+    private Point pos;
+    private int playerId;
+    private int point = 100;
+
     public Life (int playerId, int lifePoint) {
         super();
-        this.resize(new Size(50,20));
-        this.arcSize = new Size(20,5);
-        // playerIdとlifePointの応じて表示posを指定
-        this.pos = playerId == 1 ? new Point(lifePoint * (this.Width() + 10), 0)
-                : new Point(Bong.size.Width() - this.Width() - (lifePoint * (this.Width() + 10)), 0);
+        this.point = lifePoint;
+        this.playerId = playerId;
+        this.resize(new Size(point, 20));
+        // playerIdとlifePointの応じて表示
+        this.pos = playerId == P1 ? new Point(0, 0)
+                                  : new Point(Bong.size.Width() - this.Width(), 0);
         this.color = Color.ORANGE;
     }
-    
+
     public void resize(Size size) {
         super.setMySize(size);
         this.size = size;
     }
-    
+
+    public void descrease() {
+        this.point -= 10;
+        this.resize(new Size(point, this.size.Height()));
+        repaint();
+    }
+
     public int Width() { return size.Width(); }
     public int Height() { return size.Height(); }
-    
+    public int Point() { return point; }
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

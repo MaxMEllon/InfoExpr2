@@ -8,31 +8,31 @@ import Game.Content.Bar.*;
 public abstract class Player
 {
     protected Bar bar;
-    
     protected int direction = 0;
-    public int id;
-    protected int lifePoint = 5;
     protected Life life;
+    protected int id;
+
     protected Player(int id) {
         this(id, 0);
     }
 
     protected Player(int id, int barId) {
+        this.life = new Life(id, 100);
         bar = BarCreator.create(id, barId);
         this.id = id;
     }
 
-    public Bar getBar() {
-        return this.bar;
+    public Bar getBar() { return this.bar; }
+    public int getLifePoint() { return this.life.Point(); }
+    public Life getLife() { return this.life; }
+
+    public void decreaseLife() {
+        this.life.descrease();
     }
-    
-    public int getLifePoint() {
-        return this.lifePoint;
+
+    public int getId() {
+        return this.id;
     }
-    
-    public void decreaseLifePoint() {
-        this.lifePoint--;
-    };
 
     public abstract void moveBar();
 

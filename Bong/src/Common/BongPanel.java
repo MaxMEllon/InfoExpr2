@@ -25,7 +25,7 @@ public class BongPanel extends JPanel
         this();
         this.size = size;
     }
-    
+
     public BongPanel(Point point, Size size) {
         this(size);
         this.point = point;
@@ -49,11 +49,11 @@ public class BongPanel extends JPanel
         Rectangle ballRec = new Rectangle(b.getX(), b.getY(), b.getWidth(), b.getHeight());
         return ballRec.intersects(objRec);
     }
-    
+
     public Area getArea() {
         return new Area(this.point, this.size);
     }
-    
+
     public void callbackMethod() {
         _callbacks.callbackMethod();
     }
