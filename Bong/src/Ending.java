@@ -13,6 +13,9 @@ import java.util.ArrayList;
 
 import javax.swing.JApplet;
 
+import Common.Size;
+import Game.Bong;
+
 public class Ending extends JApplet implements Runnable
 {
     private static final long serialVersionUID = 2794452085978073515L;
@@ -26,7 +29,7 @@ public class Ending extends JApplet implements Runnable
     int strw;   // 文字列の幅
 
     Thread th = null;
-    Dimension size;
+    Size size = Bong.size;
     Image back;
     Graphics buffer;
 
@@ -34,14 +37,13 @@ public class Ending extends JApplet implements Runnable
     public void start() {
         if (th == null) {
             credit = new ArrayList<String>();
-            size = getSize();
-            posx = size.width;
-            posy = size.height;
-            back = createImage(size.width, size.height);
+            posx = size.Width();
+            posy = size.Height();
+            back = createImage(size.Width(), size.Height());
             buffer = back.getGraphics();
             th = new Thread(this);
             th.start();
-            loadFile("LICENSE.txt");   /* TODO: 表示したいファイル名  */
+            loadFile("01.txt");   /* TODO: 表示したいファイル名  */
         }
     }
 
@@ -51,7 +53,7 @@ public class Ending extends JApplet implements Runnable
     }
 
     public void loadFile(String filename) {
-        String path = "/.../" + filename;  /* TODO:pathを指定  */
+        String path = "..\\Bong\\assets\\files\\" + filename;  /* TODO:pathを指定  */
         try {
             File file = new File(path);
             BufferedReader br = new BufferedReader(new FileReader(file));
@@ -71,7 +73,7 @@ public class Ending extends JApplet implements Runnable
     public void paint(Graphics g) {
         super.paint(g);
         buffer.setColor(getBackground());
-        buffer.fillRect(0, 0, size.width, size.height);
+        buffer.fillRect(0, 0, size.Width(), size.Height());
         buffer.setColor(Color.BLACK);
         FontMetrics fm = buffer.getFontMetrics();
         Font f = new Font("TimesRoman", Font.ITALIC, FONTSIZE);
