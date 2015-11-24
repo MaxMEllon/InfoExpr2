@@ -53,7 +53,7 @@ public class Ending extends JApplet implements Runnable
     }
 
     public void loadFile(String filename) {
-        String path = "..\\Bong\\assets\\files\\" + filename;  /* TODO:pathを指定  */
+        String path = "..\\Bong\\assets\\file\\" + filename;  /* TODO:pathを指定  */
         try {
             File file = new File(path);
             BufferedReader br = new BufferedReader(new FileReader(file));
