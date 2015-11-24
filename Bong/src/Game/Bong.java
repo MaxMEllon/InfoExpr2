@@ -17,13 +17,12 @@ public class Bong extends JApplet implements Runnable, KeyListener
 
     public static final Size size = new Size(800, 420);
     public static boolean threadSuspended = true;
-    public static boolean Start = true;
-    public static boolean press = true;
+    public static boolean titleFlag = true;
     private Field field;
+    private AudioClip Bgm;
     private Thread thread = null;
     private User user1 = new User(P1, 1);
     private User user2 = new User(P2, 2);
-    private AudioClip Bgm;
     private Title title = new Title();
 
     @Override
@@ -38,7 +37,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
     public void run() {
         Thread thisThread = Thread.currentThread();
         while (thread == thisThread) {
-            if( press ) {
+            if(titleFlag) {
                 getContentPane().add(title); // Title表示
                 try {
                     Thread.sleep(10);
@@ -108,15 +107,20 @@ public class Bong extends JApplet implements Runnable, KeyListener
             notify();
         }
     }
+
     public synchronized void gameStart(KeyEvent e) {
         int key = e.getKeyCode();
-        if (key == ENTER) {
+        if (! titleFlag || key != ENTER) { return; }
+        try {
             this.field = new Field(size);
             field.addPlayer(user1);
             field.addPlayer(user2);
             this.setContentPane(field);
-            press = false;
+            titleFlag = false;
             threadSuspended = false;
+            Thread.sleep(100);
+        } catch (InterruptedException ex) {
+            System.out.println("F:run Thread error");
         }
     }
 
