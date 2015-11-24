@@ -36,7 +36,6 @@ public class Field extends BongPanel
     private AudioClip se01, se02;
     private Ball ball = BallCreator.create(0);
     private Item item;
-    private Life life;
 
     public Field(Size size) {
         super(new Point(0, 0), size);
