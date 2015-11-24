@@ -47,7 +47,11 @@ public class Bong extends JApplet implements Runnable, KeyListener
             } else {
                 this.pauseIfNeeded(); // pause処理
                 this.repaint();
-                field.update();
+                if (field.showResultIfNeededAndJudgeGameEnd()){
+                    thread = null;
+                } else {
+                    field.update();
+                }
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException e) {

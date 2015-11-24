@@ -30,9 +30,8 @@ public abstract class Player
         this.life.descrease();
     }
 
-    public int getId() {
-        return this.id;
-    }
+    public int Id() { return this.id; }
+    public Life Life() { return this.life; }
 
     public abstract void moveBar();
 
