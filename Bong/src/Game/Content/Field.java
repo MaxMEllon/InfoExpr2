@@ -1,5 +1,7 @@
 package Game.Content;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -31,6 +33,7 @@ public class Field extends BongPanel
     private ArrayList<Bar> bars = new ArrayList<Bar>();
     private ArrayList<Life> lifes = new ArrayList<Life>();
     private ArrayList<Player> players = new ArrayList<Player>();
+    private AudioClip se01;
     private Ball ball = BallCreator.create(0);
     private Item item;
     private Life life;
@@ -39,6 +42,7 @@ public class Field extends BongPanel
         super(new Point(0, 0), size);
         this.setBounds(0, 0, size.Width(), size.Height());
         this.add(ball);
+        se01 = Applet.newAudioClip(getClass().getClassLoader().getResource("effect/01.wav"));
     }
 
     public Field(int width, int height) {
@@ -67,6 +71,7 @@ public class Field extends BongPanel
             && ball.vector.y >= bars.get(0).Y() - 5
             && ball.vector.y <= bars.get(0).Y() + bars.get(0).Height() + 5) {
             boundBall();
+            se01.play();
             System.out.println("bound 1p");
         }
         // ball と2P barの当たり判定
@@ -74,6 +79,7 @@ public class Field extends BongPanel
             && ball.vector.y >= bars.get(1).Y() - 5
             && ball.vector.y <= bars.get(1).Y() + bars.get(1).Height() + 5) {
             boundBall();
+            se01.play();
             System.out.println("bound 2p");
         }
         if (ball.vector.x >= Bong.size.Width()) {  //右壁での反射
