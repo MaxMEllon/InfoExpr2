@@ -1,9 +1,10 @@
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,10 +17,11 @@ import javax.swing.JApplet;
 import Common.Size;
 import Game.Bong;
 
-public class Ending extends JApplet implements Runnable
+public class Ending extends JApplet implements Runnable, KeyListener
 {
     private static final long serialVersionUID = 2794452085978073515L;
-    private final int SPEED = 3;        // 流速
+    private static final int SKIP = 32, END = 27;
+    private int SPEED = 3;              // 流速
     private final int SPACE = 50;       // 行間
     private final int FONTSIZE = 18;    // フォントサイズ
 
@@ -33,6 +35,11 @@ public class Ending extends JApplet implements Runnable
     Image back;
     Graphics buffer;
 
+    public void init() {
+        this.setFocusable(true);
+        this.addKeyListener(this);
+    }
+    
     @Override
     public void start() {
         if (th == null) {
@@ -53,7 +60,7 @@ public class Ending extends JApplet implements Runnable
     }
 
     public void loadFile(String filename) {
-        String path = "..\\Bong\\assets\\files\\" + filename;  /* TODO:pathを指定  */
+        String path = "..\\Bong\\assets\\file\\" + filename;  /* TODO:pathを指定  */
         try {
             File file = new File(path);
             BufferedReader br = new BufferedReader(new FileReader(file));
@@ -100,4 +107,25 @@ public class Ending extends JApplet implements Runnable
             } catch (InterruptedException e) {}
         }
     }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        this.endingSkip(e);
+    }
+    
+    public synchronized void endingSkip(KeyEvent e) {
+        int key = e.getKeyCode();
+        if (key == SKIP) {
+            SPEED++;
+        }
+        if (key == END) {
+            System.exit(0);
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) { }
+
+    @Override
+    public void keyTyped(KeyEvent e) { }
 }
