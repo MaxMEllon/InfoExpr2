@@ -3,8 +3,8 @@ package Game;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.applet.*;
-import java.net.URL;
 import javax.swing.*;
+
 import Common.Size;
 import Game.Content.Field;
 import Player.User;
@@ -13,36 +13,45 @@ public class Bong extends JApplet implements Runnable, KeyListener
 {
     private static final long serialVersionUID = 6838266341443127470L;
     private static final int P1 = 1, P2 = 2;
-    private static final int PAUSE = 80, RESTART = 82;
+    private static final int PAUSE = 80, RESTART = 82, ENTER = 10;
 
-    public static final Size size = new Size(800, 400);
-    public static boolean threadSuspended = false;
+    public static final Size size = new Size(800, 420);
+    public static boolean threadSuspended = true;
+    public static boolean titleFlag = true;
     private Field field;
+    private AudioClip Bgm;
     private Thread thread = null;
     private User user1 = new User(P1, 1);
     private User user2 = new User(P2, 2);
-    private AudioClip Bgm;
+    private Title title = new Title();
 
     @Override
     public void init() {
         this.setSize(size.Width(), size.Height());
-        this.field = new Field(size);
-        field.addBar(user1.getBar());
-        field.addBar(user2.getBar());
-        this.Bgm = getAudioClip(getDocumentBase(), "../assets/bgm/01.mid");
-        this.setContentPane(field);
         this.setFocusable(true);
         this.addKeyListener(this);
+        this.Bgm = getAudioClip(getDocumentBase(), "../assets/bgm/01.mid"); // BGM追加
     }
 
     @Override
     public void run() {
         Thread thisThread = Thread.currentThread();
         while (thread == thisThread) {
-            while ( true ) {
-                this.pauseIfNeeded();
+            if(titleFlag) {
+                getContentPane().add(title); // Title表示
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    System.out.println("F:run Thread error");
+                }
+            } else {
+                this.pauseIfNeeded(); // pause処理
                 this.repaint();
-                field.update();
+                if (field.showResultIfNeededAndJudgeGameEnd()){
+                    thread = null;
+                } else {
+                    field.update();
+                }
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException e) {
@@ -84,6 +93,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
             this.user2.onPress(e);
             this.user1.onPress(e);
         }
+        this.gameStart(e);
         this.pauseAsync(e);
         repaint();
     }
@@ -95,6 +105,22 @@ public class Bong extends JApplet implements Runnable, KeyListener
         } else if (key == RESTART) {
             threadSuspended = false;
             notify();
+        }
+    }
+
+    public synchronized void gameStart(KeyEvent e) {
+        int key = e.getKeyCode();
+        if (! titleFlag || key != ENTER) { return; }
+        try {
+            this.field = new Field(size);
+            field.addPlayer(user1);
+            field.addPlayer(user2);
+            this.setContentPane(field);
+            titleFlag = false;
+            threadSuspended = false;
+            Thread.sleep(100);
+        } catch (InterruptedException ex) {
+            System.out.println("F:run Thread error");
         }
     }
 

@@ -11,7 +11,7 @@ public class User extends Player
 
     private int up;
     private int down;
-
+    
     public User(int id) {
         super(id);
         this.setKey();

@@ -1,7 +1,12 @@
 package Common;
 
 import javax.swing.JPanel;
+
+import Game.Content.Ball.Ball;
+import Common.Area;
+
 import java.awt.Dimension;
+import java.awt.Rectangle;
 
 public class BongPanel extends JPanel
 {
@@ -20,7 +25,7 @@ public class BongPanel extends JPanel
         this();
         this.size = size;
     }
-    
+
     public BongPanel(Point point, Size size) {
         this(size);
         this.point = point;
@@ -39,14 +44,16 @@ public class BongPanel extends JPanel
         return this.size.Height();
     }
 
-    public boolean isHit(Area area) {
-        return false;
+    public boolean isHit(Ball b) {
+        Rectangle objRec = new Rectangle(getX(), getY(), getWidth(), getHeight());
+        Rectangle ballRec = new Rectangle(b.getX(), b.getY(), b.getWidth(), b.getHeight());
+        return ballRec.intersects(objRec);
     }
-    
+
     public Area getArea() {
         return new Area(this.point, this.size);
     }
-    
+
     public void callbackMethod() {
         _callbacks.callbackMethod();
     }

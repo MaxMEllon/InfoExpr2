@@ -22,25 +22,12 @@ public class Ball extends BongPanel
     }
 
     public void move() {
-        if (vector.x >= Bong.size.Width()) {
-            vector.reverceX();
-            vector.x = Bong.size.Width() - (size.Width() + 1);
-        }
-        if (vector.y >= Bong.size.Height()) {
-            vector.reverceY();
-            vector.y = Bong.size.Height() - (size.Height() + 1);
-        }
-        if (vector.x <= 0) {
-            vector.reverceX();
-            vector.x = size.Width() + 1;
-        }
-        if (vector.y <= 0) {
-            vector.reverceY();
-            vector.y = size.Height() + 1;
-        }
         vector.move();
         this.setBounds(vector.x, vector.y, size.Width(), size.Height());
     }
+
+    public int Width() { return size.Width(); }
+    public int Height() { return size.Height(); }
 
     public boolean isEqual(Ball ball) {
         return this.color == ball.color && this.vector == ball.vector;
