@@ -1,8 +1,11 @@
 package Game.Content.Bar;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+
 import Common.BongPanel;
 import Common.Point;
 import Common.Size;
@@ -17,6 +20,7 @@ public class Bar extends BongPanel
     protected Color color;
     protected Point position;
     protected int speed = 30;
+    private AudioClip se03;
 
     public Bar(Color color, Point pos) {
         super();
@@ -24,6 +28,7 @@ public class Bar extends BongPanel
         this.arcSize = new Size(5, 20);
         this.color = color;
         this.position = pos;
+        se03 = Applet.newAudioClip(getClass().getClassLoader().getResource("effect/03.wav"));  // Barが移動した時の音
     }
 
     public void resize(Size size) {
@@ -36,6 +41,7 @@ public class Bar extends BongPanel
         if (y <= 20) { y = 20; }
         if (y + size.Height() >= Bong.size.Height()) { y = Bong.size.Height() - size.Height(); }
         this.position.move(this.position.X(), y);
+        se03.play();
     }
 
     public int X() { return position.X(); }

@@ -33,7 +33,7 @@ public class Field extends BongPanel
     private ArrayList<Bar> bars = new ArrayList<Bar>();
     private ArrayList<Life> lifes = new ArrayList<Life>();
     private ArrayList<Player> players = new ArrayList<Player>();
-    private AudioClip se01;
+    private AudioClip se01, se02;
     private Ball ball = BallCreator.create(0);
     private Item item;
     private Life life;
@@ -42,7 +42,8 @@ public class Field extends BongPanel
         super(new Point(0, 0), size);
         this.setBounds(0, 0, size.Width(), size.Height());
         this.add(ball);
-        se01 = Applet.newAudioClip(getClass().getClassLoader().getResource("effect/01.wav"));
+        se01 = Applet.newAudioClip(getClass().getClassLoader().getResource("effect/01.wav"));  // BallとBarが接触した時の音
+        se02 = Applet.newAudioClip(getClass().getClassLoader().getResource("effect/02.wav"));  // Ballと壁が接触した時の音
     }
 
     public Field(int width, int height) {
@@ -85,22 +86,26 @@ public class Field extends BongPanel
         if (ball.vector.x >= Bong.size.Width()) {  //右壁での反射
             ball.vector.reverceX();
             ball.vector.x = Bong.size.Width() - (ball.Width() + 1);
+            se02.play();
             System.out.println("descrease life 2p");
             players.get(1).decreaseLife();
         }
         if (ball.vector.y >= Bong.size.Height()) {  // 下壁での反射
             ball.vector.reverceY();
             ball.vector.y = Bong.size.Height() - (ball.Height() + 1);
+            se02.play();
         }
         if (ball.vector.x <= 0) {  // 左壁での反射
             ball.vector.reverceX();
             ball.vector.x = ball.Width() + 1;
+            se02.play();
             System.out.println("descrease life 1p");
             players.get(0).decreaseLife();
         }
         if (ball.vector.y <= 20) {  // 上壁での反射
             ball.vector.reverceY();
             ball.vector.y = ball.Height() + 1;
+            se02.play();
         }
         ball.move();
     }
