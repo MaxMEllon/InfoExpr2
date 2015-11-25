@@ -5,3 +5,5 @@ script:
   - java -version
   - cd Bong
   - make test
+  - ant clean
+  - ant

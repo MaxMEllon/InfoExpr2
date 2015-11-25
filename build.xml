@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- WARNING: Eclipse auto-generated file.
-              Any modifications will be overwritten.
-              To include a user specific buildfile here, simply create one in the same
-              directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="InfoExpr2">
+<project basedir="." default="build" name="InfoExpr2">
     <property environment="env"/>
     <property name="ECLIPSE_HOME" value="../../eclipse/"/>
     <property name="debuglevel" value="source,lines,vars"/>
@@ -48,15 +44,15 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="Bong (1)">
+    <target name="Bong">
         <java classname="sun.applet.AppletViewer" dir="." failonerror="true" fork="yes">
-            <arg line="Bong (1).html"/>
+            <arg line="Bong.html"/>
             <classpath refid="InfoExpr2.classpath"/>
         </java>
     </target>
-    <target name="Ending (1)">
+    <target name="Ending">
         <java classname="sun.applet.AppletViewer" dir="." failonerror="true" fork="yes">
-            <arg line="Ending (1).html"/>
+            <arg line="Ending.html"/>
             <classpath refid="InfoExpr2.classpath"/>
         </java>
     </target>
