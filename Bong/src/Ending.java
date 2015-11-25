@@ -21,9 +21,9 @@ public class Ending extends JApplet implements Runnable, KeyListener
 {
     private static final long serialVersionUID = 2794452085978073515L;
     private static final int SKIP = 32, END = 27;
-    private int SPEED = 3;              // 流速
     private final int SPACE = 50;       // 行間
     private final int FONTSIZE = 18;    // フォントサイズ
+    private int speed = 3;              // 流速
 
     ArrayList<String> credit;
     int posx;   // 表示するx座標
@@ -95,7 +95,7 @@ public class Ending extends JApplet implements Runnable, KeyListener
     public void run() {
         Thread th2 = Thread.currentThread();
         while (th == th2) {
-            posy -= SPEED;
+            posy -= speed;
             if (posy <= (-SPACE * credit.size())) {
                 //System.out.print("stop"); /*debug*/
                 stop();
@@ -116,7 +116,7 @@ public class Ending extends JApplet implements Runnable, KeyListener
     public synchronized void endingSkip(KeyEvent e) {
         int key = e.getKeyCode();
         if (key == SKIP) {
-            SPEED++;
+            speed++;
         }
         if (key == END) {
             System.exit(0);
