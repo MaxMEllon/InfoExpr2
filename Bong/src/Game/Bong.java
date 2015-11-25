@@ -13,11 +13,12 @@ public class Bong extends JApplet implements Runnable, KeyListener
 {
     private static final long serialVersionUID = 6838266341443127470L;
     private static final int P1 = 1, P2 = 2;
-    private static final int PAUSE = 80, RESTART = 82, ENTER = 10;
+    private static final int PAUSE = 80, RESTART = 82, ENTER = 10, ESCAPE = 27;
 
     public static final Size size = new Size(800, 420);
     public static boolean threadSuspended = true;
     public static boolean titleFlag = true;
+    public static boolean endFlag = false;
     private Field field;
     private AudioClip Bgm;
     private Thread thread = null;
@@ -48,6 +49,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
                 this.pauseIfNeeded(); // pause処理
                 this.repaint();
                 if (field.showResultIfNeededAndJudgeGameEnd()){
+                    endFlag = true;
                     thread = null;
                 } else {
                     field.update();
@@ -95,6 +97,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
         }
         this.gameStart(e);
         this.pauseAsync(e);
+        this.backToTitle(e);
         repaint();
     }
 
@@ -112,6 +115,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
         int key = e.getKeyCode();
         if (! titleFlag || key != ENTER) { return; }
         try {
+            System.out.println("gameStart");
             this.field = new Field(size);
             field.addPlayer(user1);
             field.addPlayer(user2);
@@ -122,6 +126,17 @@ public class Bong extends JApplet implements Runnable, KeyListener
         } catch (InterruptedException ex) {
             System.out.println("F:run Thread error");
         }
+    }
+    
+    public synchronized void backToTitle(KeyEvent e) {
+        int key = e.getKeyCode();
+        if (! endFlag || key != ESCAPE) { return; }
+        titleFlag = true;
+        endFlag = false;
+        user1 = new User(P1, 1);
+        user2 = new User(P2, 2);
+        start();
+        repaint();
     }
 
     @Override
