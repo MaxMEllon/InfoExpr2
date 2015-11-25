@@ -32,7 +32,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
         this.setSize(size.Width(), size.Height());
         this.setFocusable(true);
         this.addKeyListener(this);
-        this.Bgm =  Applet.newAudioClip(getClass().getClassLoader().getResource("bgm/01.mid")); // BGM追加
+        this.Bgm = Applet.newAudioClip(getClass().getClassLoader().getResource("bgm/01.mid")); // BGM追加
     }
 
     @Override
