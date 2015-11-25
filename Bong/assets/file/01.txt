@@ -22,30 +22,44 @@
 
  --------------------------------------------------------------------------------------
 
-		企画 :		joniyjoniy
+				   企画
+
+				joniyjoniy
 				ker2357
 				maxmellon
 				mille
 
-		リーダー :	joniyjoniy
+				 リーダー
 
-		開発 :		joniyjoniy
+				joniyjoniy
+
+				   開発
+
+				joniyjoniy
 				ker2357
 				maxmellon
 				mille
 
-		デバッグ :	joniyjoniy
+				 デバッグ
+
+				joniyjoniy
 				ker2357
 				maxmellon
 				mille
 
-		デザイン :	joniyjoniy
+				 デザイン
+
+				joniyjoniy
 				ker2357
 				maxmellon
 				mille
 
-		音楽 :		魔王魂様
-				http://maoudamashii.jokersounds.com/music_rule.html
+				  音楽
 
-		リポジトリ : 	https://github.com/MaxMEllon/InfoExpr2
+				魔王魂様
+		http://maoudamashii.jokersounds.com/music_rule.html
+
+				リポジトリ
+
+		    https://github.com/MaxMEllon/InfoExpr2
 
