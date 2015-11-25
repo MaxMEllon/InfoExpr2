@@ -1,4 +1,4 @@
-/* AUTOMATICALLY GENERATED ON Thu Nov 12 16:27:22 JST 2015*/
+/* AUTOMATICALLY GENERATED ON Wed Nov 25 20:52:58 JST 2015*/
 /* DO NOT EDIT */
 
 grant codeBase "file:/Users/maxmellon/work/java/InfoExpr2/Bong/assets/bgm/*" {
@@ -7,5 +7,9 @@ grant codeBase "file:/Users/maxmellon/work/java/InfoExpr2/Bong/assets/bgm/*" {
 
 grant {
   permission java.io.FilePermission "<<ALL FILES>>", "read";
+};
+
+grant {
+  permission java.lang.RuntimePermission "modifyThreadGroup";
 };
 
