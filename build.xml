@@ -1,32 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project basedir="." default="build" name="InfoExpr2">
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="InfoExpr2">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../eclipse/"/>
+    <property name="ECLIPSE_HOME" value="../../../../eclipse/"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
     <path id="InfoExpr2.classpath">
-        <pathelement location="Bong/bin"/>
+        <pathelement location="bin"/>
     </path>
     <target name="init">
-        <mkdir dir="Bong/bin"/>
-        <copy includeemptydirs="false" todir="Bong/bin">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
             <fileset dir="Bong/src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="Bong/assets">
                 <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
     </target>
     <target name="clean">
-        <delete dir="Bong/bin"/>
+        <delete dir="bin"/>
     </target>
     <target depends="clean" name="cleanall"/>
     <target depends="build-subprojects,build-project" name="build"/>
     <target name="build-subprojects"/>
     <target depends="init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="Bong/bin" includeantruntime="false" source="${source}" target="${target}">
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
             <src path="Bong/src"/>
+            <src path="Bong/assets"/>
             <classpath refid="InfoExpr2.classpath"/>
         </javac>
     </target>
