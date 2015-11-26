@@ -40,9 +40,9 @@ public class Bong extends JApplet implements Runnable, KeyListener
         Thread thisThread = Thread.currentThread();
         while (thread == thisThread) {
             if(titleFlag) {
-                getContentPane().add(title); // Title表示
+                getContentPane().add(title);
                 try {
-                    Thread.sleep(10);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     System.out.println("F:run Thread error");
                 }
