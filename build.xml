@@ -5,7 +5,6 @@
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="InfoExpr2">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../../../eclipse/"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
@@ -64,6 +63,12 @@
     <target name="Ending">
         <java classname="sun.applet.AppletViewer" dir="." failonerror="true" fork="yes">
             <arg line="Ending.html"/>
+            <classpath refid="InfoExpr2.classpath"/>
+        </java>
+    </target>
+    <target name="Title">
+        <java classname="sun.applet.AppletViewer" dir="." failonerror="true" fork="yes">
+            <arg line="Title.html"/>
             <classpath refid="InfoExpr2.classpath"/>
         </java>
     </target>
