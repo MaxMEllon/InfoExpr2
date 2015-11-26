@@ -2,6 +2,7 @@ package Game;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.net.URL;
 import java.applet.*;
 
 import javax.swing.*;
@@ -32,8 +33,8 @@ public class Bong extends JApplet implements Runnable, KeyListener
         this.setSize(size.Width(), size.Height());
         this.setFocusable(true);
         this.addKeyListener(this);
-        this.Bgm = Applet.newAudioClip(getClass().getClassLoader().getResource("bgm/01.mid")); // BGM追加
-        title = new Title(getCodeBase());
+        this.Bgm = getAudioClip(getDocumentBase(), "../Bong/assets/bgm/01.mid"); // BGM追加
+        title = new Title(getDocumentBase());
     }
 
     @Override

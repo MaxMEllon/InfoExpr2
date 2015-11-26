@@ -1,4 +1,3 @@
-import java.applet.Applet;
 import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.Font;
@@ -41,7 +40,7 @@ public class Ending extends JApplet implements Runnable, KeyListener
     public void init() {
         this.setFocusable(true);
         this.addKeyListener(this);
-        this.Bgm = Applet.newAudioClip(getClass().getClassLoader().getResource("bgm/02.mid"));
+        this.Bgm = getAudioClip(getDocumentBase(), "../Bong/assets/bgm/02.mid"); // BGM追加
     }
 
     @Override

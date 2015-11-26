@@ -28,7 +28,7 @@ public class Title extends BongPanel
         this.setLayout(null);
         try {
             System.out.println(base);
-            URL url = new URL(base + "../assets/images/logo.png");
+            URL url = new URL(base + "../Bong/assets/images/logo.png");
             image = ImageIO.read(url);
         } catch (IOException ex) {
             System.out.println("cant read image file");
