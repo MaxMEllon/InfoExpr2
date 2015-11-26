@@ -1,3 +1,5 @@
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -24,6 +26,7 @@ public class Ending extends JApplet implements Runnable, KeyListener
     private final int SPACE = 50;       // 行間
     private final int FONTSIZE = 18;    // フォントサイズ
     private int speed = 3;              // 流速
+    private AudioClip Bgm;
 
     ArrayList<String> credit;
     int posx;   // 表示するx座標
@@ -38,11 +41,13 @@ public class Ending extends JApplet implements Runnable, KeyListener
     public void init() {
         this.setFocusable(true);
         this.addKeyListener(this);
+        this.Bgm = Applet.newAudioClip(getClass().getClassLoader().getResource("bgm/02.mid"));
     }
     
     @Override
     public void start() {
         if (th == null) {
+            this.Bgm.loop();
             credit = new ArrayList<String>();
             posx = size.Width();
             posy = size.Height();
