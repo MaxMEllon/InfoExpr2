@@ -19,6 +19,7 @@ public class Ball extends BongPanel
     public Ball() {
         super(size);
         this.vector = new Vector(Bong.size.Width()/2, Bong.size.Height()/2, 2, 2);
+        this.setBounds(vector.x, vector.y, size.Width(), size.Height());
     }
 
     public void move() {
