@@ -71,6 +71,7 @@ public class Field extends BongPanel
             && ball.vector.y >= bars.get(0).Y() - 5
             && ball.vector.y <= bars.get(0).Y() + bars.get(0).Height() + 5) {
             boundBall();
+            ball.vector.dx = Math.abs(ball.vector.dx);
             se01.play();
             System.out.println("bound 1p");
         }
@@ -96,7 +97,7 @@ public class Field extends BongPanel
         }
         if (ball.vector.x <= 0) {  // 左壁での反射
             ball.vector.reverceX();
-            ball.vector.x = ball.Width() - 5;
+            ball.vector.x = ball.Width() + 5;
             se02.play();
             System.out.println("descrease life 1p");
             players.get(0).decreaseLife();
@@ -127,8 +128,6 @@ public class Field extends BongPanel
         if (boundCounter == CHANGE_BALL_TIMING) { changeBallByRandom(); }
         // if (boundCounter == CREATE_ITEM_TIMING) { createItemByRandom(); }
         ball.vector.reverce();
-        ball.vector.x += 5 * ball.vector.dx;
-        ball.vector.y += 5 * ball.vector.dy;
         boundCounter++;
     }
 
