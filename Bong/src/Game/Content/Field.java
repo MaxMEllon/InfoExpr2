@@ -96,7 +96,7 @@ public class Field extends BongPanel
         }
         if (ball.vector.x <= 0) {  // 左壁での反射
             ball.vector.reverceX();
-            ball.vector.x = ball.Width() + 1;
+            ball.vector.x = ball.Width() - 5;
             se02.play();
             System.out.println("descrease life 1p");
             players.get(0).decreaseLife();
@@ -125,8 +125,10 @@ public class Field extends BongPanel
 
     private void boundBall() {
         if (boundCounter == CHANGE_BALL_TIMING) { changeBallByRandom(); }
-        if (boundCounter == CREATE_ITEM_TIMING) { createItemByRandom(); }
+        // if (boundCounter == CREATE_ITEM_TIMING) { createItemByRandom(); }
         ball.vector.reverce();
+        ball.vector.x += 5 * ball.vector.dx;
+        ball.vector.y += 5 * ball.vector.dy;
         boundCounter++;
     }
 
