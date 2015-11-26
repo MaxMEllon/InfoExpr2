@@ -25,7 +25,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
     private Thread thread = null;
     private User user1 = new User(P1, 1);
     private User user2 = new User(P2, 2);
-    private Title title = new Title();
+    private Title title;
 
     @Override
     public void init() {
@@ -33,6 +33,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
         this.setFocusable(true);
         this.addKeyListener(this);
         this.Bgm = Applet.newAudioClip(getClass().getClassLoader().getResource("bgm/01.mid")); // BGM追加
+        title = new Title(getCodeBase());
     }
 
     @Override
