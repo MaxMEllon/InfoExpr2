@@ -28,22 +28,22 @@ public class Ending extends JApplet implements Runnable, KeyListener
     private int speed = 3;              // 流速
     private AudioClip Bgm;
 
-    ArrayList<String> credit;
-    int posx;   // 表示するx座標
-    int posy;   // 表示するy座標
-    int strw;   // 文字列の幅
+    private ArrayList<String> credit;
+    private int posx;   // 表示するx座標
+    private int posy;   // 表示するy座標
+    private int strw;   // 文字列の幅
 
-    Thread th = null;
-    Size size = Bong.size;
-    Image back;
-    Graphics buffer;
+    private Thread th = null;
+    private Size size = Bong.size;
+    private Image back;
+    private Graphics buffer;
 
     public void init() {
         this.setFocusable(true);
         this.addKeyListener(this);
         this.Bgm = Applet.newAudioClip(getClass().getClassLoader().getResource("bgm/02.mid"));
     }
-    
+
     @Override
     public void start() {
         if (th == null) {
@@ -65,7 +65,7 @@ public class Ending extends JApplet implements Runnable, KeyListener
     }
 
     public void loadFile(String filename) {
-        String path = "..\\Bong\\assets\\file\\" + filename;  /* TODO:pathを指定  */
+        String path = "../Bong/assets/txt/" + filename;  /* TODO:pathを指定  */
         try {
             File file = new File(path);
             BufferedReader br = new BufferedReader(new FileReader(file));
@@ -117,7 +117,7 @@ public class Ending extends JApplet implements Runnable, KeyListener
     public void keyPressed(KeyEvent e) {
         this.endingSkip(e);
     }
-    
+
     public synchronized void endingSkip(KeyEvent e) {
         int key = e.getKeyCode();
         if (key == SKIP) {
