@@ -44,15 +44,14 @@ public class Bong extends JApplet implements Runnable, KeyListener
         Thread thisThread = Thread.currentThread();
         while (thread == thisThread) {
             if(titleFlag) {
-            	//this.remove(field);
                 Graphics g = this.getGraphics();
                 try {
-					g.drawImage(ImageIO.read(new URL(getCodeBase() + "../Bong/assets/images/logo.png")), 0, 0, null);
-				} catch (MalformedURLException e1) {
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
+                    g.drawImage(ImageIO.read(new URL(getCodeBase() + "../Bong/assets/images/logo.png")), 0, 0, null);
+                } catch (MalformedURLException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
