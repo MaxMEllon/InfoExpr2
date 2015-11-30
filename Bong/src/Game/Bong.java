@@ -1,10 +1,14 @@
 package Game;
 
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.applet.*;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import Common.Size;
@@ -26,7 +30,6 @@ public class Bong extends JApplet implements Runnable, KeyListener
     private Thread thread = null;
     private User user1 = new User(P1, 1);
     private User user2 = new User(P2, 2);
-    private Title title = new Title();
 
     @Override
     public void init() {
@@ -41,7 +44,15 @@ public class Bong extends JApplet implements Runnable, KeyListener
         Thread thisThread = Thread.currentThread();
         while (thread == thisThread) {
             if(titleFlag) {
-                getContentPane().add(title);
+            	//this.remove(field);
+                Graphics g = this.getGraphics();
+                try {
+					g.drawImage(ImageIO.read(new URL(getCodeBase() + "../Bong/assets/images/logo.png")), 0, 0, null);
+				} catch (MalformedURLException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
@@ -133,6 +144,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
     public synchronized void backToTitle(KeyEvent e) {
         int key = e.getKeyCode();
         if (! endFlag || key != ESCAPE) { return; }
+        if (field.result != null) { this.remove(field.result); }
         titleFlag = true;
         endFlag = false;
         user1 = new User(P1, 1);

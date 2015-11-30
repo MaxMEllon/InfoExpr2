@@ -16,7 +16,7 @@ public class Life extends BongPanel {
     private Color color;
     private Point pos;
     private int playerId;
-    private int point = 300;
+    private int point;
 
     public Life (int playerId, int lifePoint) {
         super();
@@ -35,7 +35,7 @@ public class Life extends BongPanel {
     }
 
     public void descrease() {
-        this.point -= 60;
+        this.point -= 100;
         this.resize(new Size(point, this.size.Height()));
         repaint();
     }

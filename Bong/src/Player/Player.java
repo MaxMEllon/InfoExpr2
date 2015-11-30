@@ -17,7 +17,7 @@ public abstract class Player
     }
 
     protected Player(int id, int barId) {
-        this.life = new Life(id, 100);
+        this.life = new Life(id, 400);
         bar = BarCreator.create(id, barId);
         this.id = id;
     }
