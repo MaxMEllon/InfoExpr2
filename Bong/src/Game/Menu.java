@@ -1,14 +1,14 @@
 package Game;
 
 import java.awt.*;
-import java.awt.geom.Ellipse2D;
 
 import Common.BongPanel;
 import Common.Size;
 
 public class Menu extends BongPanel
 {
-    private Size size;
+	private static final long serialVersionUID = -3956250071795909517L;
+	private Size size;
 
     public Menu() {
         this.size = Bong.size;

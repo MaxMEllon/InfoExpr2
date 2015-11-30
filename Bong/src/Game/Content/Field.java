@@ -36,6 +36,7 @@ public class Field extends BongPanel
     private AudioClip se01, se02;
     private Ball ball = BallCreator.create(0);
     private Item item;
+    public Result result;
 
     public Field(Size size) {
         super(new Point(0, 0), size);
@@ -113,12 +114,14 @@ public class Field extends BongPanel
     public boolean showResultIfNeededAndJudgeGameEnd() {
         if (players.get(0).Life().Point() <= 0) {
             this.removeAll();
-            this.add(new Result(players.get(1)));
+            this.result = new Result(players.get(1));
+            this.add(this.result);
             return true;
         }
         if (players.get(1).Life().Point() <= 0) {
             this.removeAll();
-            this.add(new Result(players.get(0)));
+            this.result = new Result(players.get(0));
+            this.add(this.result);
             return true;
         }
         return false;
