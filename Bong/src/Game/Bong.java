@@ -21,7 +21,7 @@ public class Bong extends JApplet implements Runnable, KeyListener
     private static final int P1 = 1, P2 = 2;
     private static final int PAUSE = 80, RESTART = 82, ENTER = 10, ESCAPE = 27;
 
-    public static final Size size = new Size(800, 420);
+    public static final Size size = new Size(800, 400);
     public static boolean threadSuspended = true;
     public static boolean titleFlag = true;
     public static boolean endFlag = false;

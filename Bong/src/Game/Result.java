@@ -11,18 +11,25 @@ import Player.Player;
 public class Result extends BongPanel
 {
     private static final long serialVersionUID = -4579739331077591851L;
-    private Label result;
+    private Label winner, msg;
 
     public Result(Player player) {
         super(new Point(0, 0), new Size(800, 400));
         String str = player.Id() == 1 ? "1P" : "2P";
+        String str2 = "Push ESC key!";
         this.setBackground(Color.BLACK);
         this.setBounds(0, 0, 800, 400);
-        result = new Label(str + "の勝利です");
-        result.setFont(new Font("Arial", Font.PLAIN, 50));
-        result.setBounds(200, 10,  400, 130);
-        result.setForeground(Color.YELLOW);
-        result.setBackground(Color.BLACK);
-        this.add(result);
+        winner = new Label("Winner " + str);
+        winner.setFont(new Font("Arial", Font.PLAIN, 40));
+        winner.setBounds(300, 80, 200, 100);
+        winner.setForeground(Color.YELLOW);
+        winner.setBackground(Color.BLACK);
+        msg = new Label(str2);
+        msg.setFont(new Font("Arial", Font.PLAIN, 30));
+        msg.setBounds(290, 180, 250, 100);
+        msg.setForeground(Color.WHITE);
+        msg.setBackground(Color.BLACK);
+        this.add(winner);
+        this.add(msg);
     }
 }
