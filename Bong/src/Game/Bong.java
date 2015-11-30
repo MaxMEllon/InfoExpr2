@@ -25,11 +25,13 @@ public class Bong extends JApplet implements Runnable, KeyListener
     public static boolean threadSuspended = true;
     public static boolean titleFlag = true;
     public static boolean endFlag = false;
+    public static boolean pauseFlag = false;
     private Field field;
     private AudioClip Bgm;
     private Thread thread = null;
     private User user1 = new User(P1, 1);
     private User user2 = new User(P2, 2);
+    public Pause pause;
 
     @Override
     public void init() {
@@ -117,8 +119,17 @@ public class Bong extends JApplet implements Runnable, KeyListener
         int key = e.getKeyCode();
         if (key == PAUSE) {
             threadSuspended = true;
+            if (pauseFlag == false) {
+                this.pause = new Pause();
+                this.add(this.pause);
+                pauseFlag = true;
+            }
         } else if (key == RESTART) {
             threadSuspended = false;
+            if (pauseFlag == true) {
+                this.remove(pause);
+                pauseFlag = false;
+            }
             notify();
         }
     }
