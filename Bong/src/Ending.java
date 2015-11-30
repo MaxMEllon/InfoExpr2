@@ -64,9 +64,11 @@ public class Ending extends JApplet implements Runnable, KeyListener
     }
 
     public void loadFile(String filename) {
-        String path = "../Bong/assets/txt/" + filename;  /* TODO:pathを指定  */
+        //String path = "../Bong/assets/txt/" + filename;  /* TODO:pathを指定  */
         try {
-            File file = new File(path);
+            File file = new File("txt/"+filename);
+            String path = file.getAbsolutePath();
+            System.out.println(path);
             BufferedReader br = new BufferedReader(new FileReader(file));
             String str;
             while ((str = br.readLine()) != null) {
